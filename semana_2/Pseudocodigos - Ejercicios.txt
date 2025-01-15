@@ -1,0 +1,149 @@
+1. Cree un pseudocódigo que le pida un `precio de producto` al usuario, calcule su descuento y muestre el precio final tomando en cuenta que:
+    1. Si el precio es menor a 100, el descuento es del 2%.
+    2. Si el precio es mayor o igual a 100, el descuento es del 10%.
+    3. *Ejemplos*:
+        1. 120 ? 108
+        2. 40 ? 39.2
+
+		1. Inicio
+		2. Definir precio_de_producto
+		3. Definir descuento
+		4. Definir precio_final
+		5. Mostrar "Ingrese el precio inicial del producto a consultar"
+		6. Pedir precio_de_producto
+		7. Si(precio_de_producto < 100) entonces: 
+			 7.1. descuento = precio_de_producto * 0.02
+		8. Sino:
+			 8.1. descuento = precio_de_producto * 0.1
+		9. FinSi
+		10. precio_final = precio_de_producto - descuento
+		11. Mostrar "El precio con el descuento del producto solicitado es:" precio_final
+		12. Fin
+
+
+2. Cree un pseudocódigo que le pida un `tiempo en segundos` al usuario y calcule si es menor o mayor a 10 minutos. Si es menor, muestre cuantos segundos faltarían para llegar a 10 minutos. Si es mayor, muestre “*Mayor*”.
+    1. *Ejemplos*:
+        1. 1040 ? Mayor
+        2. 140 ? 460
+        3. 599 ? 1
+		
+		1. Inicio
+		2. Definir usuario_tiempo_en_segundos
+		3. Definir referencia_en_minutos
+		4. Definir referencia_en_segundos
+		5. Definir resultado
+		6. Mostrar "Ingrese el tiempo en segundos que desea comparar"
+		7. Pedir usuario_tiempo_en_segundos
+		8. referencia_en_minutos = 10
+		9. referencia_en_segundos = 10*60
+		10. Si(usuario_tiempo_en_segundos > referencia_en_segundos) entonces:
+				10.1. resultado = "*Mayor*"
+		11. Sino:
+				11.1. resultado = referencia_en_segundos - usuario_tiempo_en_segundos
+		12. FinSi
+		13. Mostrar usuario_tiempo_en_segundos " ? " resultado
+		14. Fin
+
+
+3. Cree un algoritmo que le pida un numero al usuario y muestre la suma de todos los números desde 1 hasta ese número.
+    1. 3 ? 6 (1 + 2 + 3)
+    2. 5 ? 15 (1 + 2 + 3 + 4 + 5)
+    3. 12 ? 78 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12)
+
+		1. Inicio
+		2. Definir usuario_numero
+		3. Definir resultado
+		4. Definir contador
+		5. Mostrar "Ingrese el numero que desea procesar"
+		6. Pedir usuario_numero
+		7. contador = 1
+		8. resultado = 0
+		9. Mientras que (contador <= usuario_numero) repetir:
+			9.1. resultado = resultado + contador
+			9.2. contador = contador + 1
+		10. Mostrar usuario_numero " ? " resultado
+		11. Fin
+	
+Extras:
+1. Cree un algoritmo que le pida 2 números al usuario, los guarde en dos variables distintas (`primero` y `segundo`) y los ordene de menor a mayor en dichas variables.
+    1. Ejemplos:
+        1. A: 56, B: 32 ? A: 32, B: 56
+        2. A: 24, B: 76 ? A: 24, B: 76
+        3. A: 45, B: 12 ? A: 12, B: 45
+		
+		1. Inicio
+		2. Definir primero
+		3. Definir segundo
+		4. Definir resultado_mayor
+		5. Definir resultado_menor
+		6. Mostrar "Ingrese el primer numero que desea comparar"
+		7. Pedir primero
+		8. Mostrar "Ingrese el segundo numero que desea comparar"
+		9. Pedir segundo
+		10. Si(primero > segundo) entonces:
+				10.1. resultado_mayor = primero
+				10.2. resultado_menor = segundo
+		11. Sino:
+				11.1. resultado_mayor = segundo
+				11.2. resultado_menor = primero
+		12. FinSi
+		13. Mostrar "A:" primero ", B:" segundo " ? A:" resultado_menor ", B:" resultado_mayor
+		14. Fin
+		
+		
+2. Cree un algoritmo que le pida al usuario una velocidad en km/h y la convierta a m/s. Recuerda que `1 km == 1000m` y `1 hora == 60 minutos * 60 segundos`.
+    1. *Ejemplos*:
+        1. 73 ? 20.27
+        2. 50 ? 13.88
+        3. 120 ? 33.33
+		
+		1. Inicio
+		2. Definir usuario_velocidad_km_h
+		3. Definir resultado_velocidad_m_s
+		4. Mostrar "Ingrese el la velocidad en kilometros por hora -km/h- que desea convertir a metros por segundo -m/s-"
+		5. Pedir usuario_velocidad_km_h
+		6. resultado_velocidad_m_s = usuario_velocidad_km_h * (1000/3600)
+		7. Mostrar  usuario_velocidad_km_h " km/h ? " resultado_velocidad_m_s " m/s"
+		8. Fin
+
+3. Cree un algoritmo que le pregunte al usuario por el sexo de 6 personas, ingresando 1 si es mujer o 2 si es hombre, y muestre al final el porcentaje de mujeres y hombres.
+    1. *Ejemplos*:
+        1. 1, 1, 1, 2, 2, 2 ? 50% mujeres y 50% hombres
+        2. 1, 1, 2, 2, 2, 2 ? 33.3% mujeres y 66.6% hombres
+        3. 1, 1, 1, 1, 1, 2 ? 84.4% mujeres y 16.6% hombres
+		
+		1. Inicio
+		2. Definir usuario_entrada
+		3. Definir numero_de_mujeres
+		4. Definir numero_de_hombres
+		5. Definir resultado_porcentaje_mujeres
+		6. Definir resultado_porcentaje_hombres
+		7. Definir contador
+		8. Definir bandera_entrada_valida
+		9. contador = 1
+		10. total_de_personas = 6
+		11. numero_de_mujeres = 0
+		12. numero_de_hombres = 0
+		13. Mientras que (contador <= total_de_personas) repetir:
+			13.1. Mostrar "Ingrese el sexo de la persona numero " contador " para realizar el calculo deseado -ingrese 1 si es mujer y 2 si es hombre-"
+			13.2. Pedir usuario_entrada
+			13.3. Si (usuario_entrada == 1) entonces:
+					13.3.1. numero_de_mujeres = numero_de_mujeres + 1
+					13.3.2. bandera_entrada_valida = 1
+			13.4. Sino:
+					13.4.1. Si (usuario_entrada == 2) entonces:
+							13.4.1.1. numero_de_hombres = numero_de_hombres + 1
+							13.4.1.2. bandera_entrada_valida = 1
+					13.4.2. Sino:
+							13.4.2.1. bandera_entrada_valida = 0
+					13.4.3. FinSi
+			13.5. FinSi
+			13.6. Si (bandera_entrada_valida == 1) entonces:
+					13.6.1. contador = contador + 1
+			13.7. Sino: 
+					13.7.1. Mostrar "El numero provisto " usuario_entrada " es invalido. Por favor ingrese 1 si es mujer y 2 si es hombre"
+			13.8. FinSi
+		14. resultado_porcentaje_mujeres = (numero_de_mujeres/total_de_personas)*100
+		15. resultado_porcentaje_hombres = (numero_de_hombres/total_de_personas)*100
+		16. Mostrar resultado_porcentaje_mujeres "% mujeres y " resultado_porcentaje_hombres "% hombres"
+		17. Fin
