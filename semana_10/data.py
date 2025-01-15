@@ -11,7 +11,7 @@ def validate_name_from_csv(name):
         print(f'-E-(data.py:validate_name_from_csv): Provided name \'{name}\' in CSV is invalid. Valid names are strings that contains only alphabet characters and spaces.')
         print(f'-I-(data.py:validate_name_from_csv): Please review and fix the CSV file before trying to importing it.')
         exit(1)
-    return str(name)
+    return str(name.strip())
 
 
 def validate_grade_from_csv(grade):
@@ -22,7 +22,7 @@ def validate_grade_from_csv(grade):
         print(f'-E-(data.py:validate_grade_from_csv): Provided grade \'{grade}\' in CSV is invalid. Valid grades are integers in the range of [0-100].')
         print(f'-I-(data.py:validate_grade_from_csv): Please review and fix the CSV file before trying to importing it.')
         exit(1)
-    return int(grade)
+    return int(grade.strip())
 
 
 def validate_data_from_CSV(existing_list_of_student_data_dicts):
@@ -50,18 +50,34 @@ def export_current_data_to_output_CSV(list_of_student_data_dicts, csv_path, impo
                          f'has previous content. Do you want to proceed with the override? (Y/N) : ')
         user_opt = validate_Y_N_question(user_opt)
     if (user_opt == "Y"): 
-        with open(csv_path, 'w', encoding='utf-8') as file:
-            headers = list_of_student_data_dicts[0].keys()
-            writer = csv.DictWriter(file, headers)
-            writer.writeheader()
-            writer.writerows(list_of_student_data_dicts)
+        if(len(list_of_student_data_dicts)):
+            try:
+                with open(csv_path, 'w', encoding='utf-8', newline='') as file:
+                    headers = list_of_student_data_dicts[0].keys()
+                    writer = csv.DictWriter(file, headers)
+                    writer.writeheader()
+                    writer.writerows(list_of_student_data_dicts)
+            except IOError:
+                print(f'-E-(data.py:export_current_data_to_output_CSV): An error showed up while trying to write the csv file \'{csv_path}\''
+                    f'-I-(data.py:export_current_data_to_output_CSV): Please verify the output directory exists,' 
+                    f'and also check that the path for the file \'{csv_path}\' has write permissions.\n' 
+                    f'HINT: Write permissions can be affected if you are trying to write the file while'
+                    f'its already open by dome other program.'
+                )
+        else:
+            print(f'-E-(data.py:export_current_data_to_output_CSV): No available students data yet. Please introduce manually one or more students, or import a CSV file before running this function.\n')
     else:
         print(f'-I-(data.py:export_current_data_to_output_CSV): User decided to not proceed with the override of the existing csv.') 
 
 
 def import_existing_data_from_CSV(csv_path):
-    existing_list_of_student_data_dicts = [] 
-    with open(csv_path, mode='r', newline='', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        existing_list_of_student_data_dicts = [row for row in reader]
-    return validate_data_from_CSV(existing_list_of_student_data_dicts)
+    existing_list_of_student_data_dicts = []
+    try: 
+        with open(csv_path, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            existing_list_of_student_data_dicts = [row for row in reader]
+        return validate_data_from_CSV(existing_list_of_student_data_dicts)
+    except IOError:
+        print(f'-E-(data.py:export_current_data_to_output_CSV): An error showed up while trying to read the csv file \'{csv_path}\''
+              f'-I-(data.py:export_current_data_to_output_CSV): Please verify that \'{csv_path}\' exists and is readable.\n'
+        ) 

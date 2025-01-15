@@ -103,37 +103,48 @@ def get_students_from_user():
 
 def print_all_students_data(list_of_student_data_dicts):
     # Extract the keys (column names) from the first dictionary
-    headers = list_of_student_data_dicts[0].keys()
-    
-    # Calculate the width of each column
-    col_widths = {header: max(len(header), max(len(str(row[header])) for row in list_of_student_data_dicts)) for header in headers}
-    
-    # Print the header row
-    header_row = " | ".join(f"{header:<{col_widths[header]}}" for header in headers)
-    print(header_row)
-    print("-" * len(header_row))
-    
-    # Print each row of list_of_student_data_dicts
-    for row in list_of_student_data_dicts:
-        print(" | ".join(f"{str(row[header]):<{col_widths[header]}}" for header in headers))
-    print("\n")
+    if(len(list_of_student_data_dicts)):
+        headers = list_of_student_data_dicts[0].keys()
+        
+        # Calculate the width of each column
+        col_widths = {header: max(len(header), max(len(str(row[header])) for row in list_of_student_data_dicts)) for header in headers}
+        
+        # Print the header row
+        header_row = " | ".join(f"{header:<{col_widths[header]}}" for header in headers)
+        print(header_row)
+        print("-" * len(header_row))
+        
+        # Print each row of list_of_student_data_dicts
+        for row in list_of_student_data_dicts:
+            print(" | ".join(f"{str(row[header]):<{col_widths[header]}}" for header in headers))
+        print("\n")
+    else:
+        print(f'-E-(actions.py:print_all_students_data): No available students data yet. Please introduce manually one or more students, or import a CSV file before running this function.\n')
+
 
 
 def print_top_3_students(list_of_student_data_dicts):
-    sorted_list_of_student_data_dicts = sorted(list_of_student_data_dicts, key=lambda x:x['average_grade'], reverse=True)
-    list_of_top_3_students_data_dicts = sorted_list_of_student_data_dicts[:3]
-    counter = 1
-    for student_dict in list_of_top_3_students_data_dicts:
-        print(f'-I-(actions.py:print_top_3_students): Top {counter} student: {student_dict['name']} -average grade {student_dict['average_grade']}-')
-    print("\n")
+    if (len(list_of_student_data_dicts) >= 3):
+        sorted_list_of_student_data_dicts = sorted(list_of_student_data_dicts, key=lambda x:x['average_grade'], reverse=True)
+        list_of_top_3_students_data_dicts = sorted_list_of_student_data_dicts[:3]
+        counter = 1
+        for student_dict in list_of_top_3_students_data_dicts:
+            print(f'-I-(actions.py:print_top_3_students): Top {counter} student: {student_dict['name']} -average grade {student_dict['average_grade']}-')
+        print("\n")
+    else:
+        print(f'-E-(actions.py:print_top_3_students): The available data corresponds to less than three students. Please make sure data from at least three students is available (either by manually providing it or by importing a CSV file before running this function).\n')
+
 
 
 def print_average_of_all_students(list_of_student_data_dicts):
-    total_grades = 0
-    counter = 0
-    for student_dict in list_of_student_data_dicts:
-        total_grades += student_dict['average_grade']
-        counter += 1
-    total_average = round(total_grades/counter,3)
-    print(f'-I-(actions.py:print_average_of_all_students): The total grades average for all the students is: {total_average}')
-    print("\n")
+    if(len(list_of_student_data_dicts)):
+        total_grades = 0
+        counter = 0
+        for student_dict in list_of_student_data_dicts:
+            total_grades += student_dict['average_grade']
+            counter += 1
+        total_average = round(total_grades/counter,3)
+        print(f'-I-(actions.py:print_average_of_all_students): The total grades average for all the students is: {total_average}')
+        print("\n")
+    else:
+        print(f'-E-(actions.py:print_average_of_all_students): No available students data yet. Please introduce manually one or more students, or import a CSV file before running this function.\n')
