@@ -1,3 +1,24 @@
+import re
+from tabulate import tabulate
+
+
+class Student():
+    def __init__(self, name, group, spanish_grade, english_grade, social_studies_grade, science_grade, average_grade):
+        self.name = name
+        self.group = group
+        self.spanish_grade = spanish_grade
+        self.english_grade = english_grade
+        self.social_studies_grade = social_studies_grade
+        self.science_grade = science_grade
+        self.average_grade = average_grade
+        self.attributes_names = ('name', 
+                                'group', 
+                                'spanish_grade', 
+                                'english_grade',
+                                'social_studies_grade',
+                                'science_grade',
+                                'average_grade')              
+
 
 def validate_user_opt(user_opt, menu_options):
     while True:
@@ -29,7 +50,6 @@ def validate_Y_N_question(y_n_usr_input):
 
 
 def validate_name(name):
-    import re
     while True:
         try:
             is_alpha_space_chk = bool(re.fullmatch(r'[A-Za-z\s]+', str(name)))
@@ -57,23 +77,6 @@ def validate_grade(grade):
             break
     return grade
 
-class Student():
-    def __init__(self, attributes_dict):
-        self.name = attributes_dict['name']
-        self.group = attributes_dict['group']
-        self.spanish_grade = attributes_dict['spanish_grade']
-        self.english_grade = attributes_dict['english_grade']
-        self.social_studies_grade = attributes_dict['social_studies_grade']
-        self.science_grade = attributes_dict['science_grade']
-        self.average_grade = attributes_dict['average_grade']
-        self.attributes_names = ('name', 
-                                'group', 
-                                'spanish_grade', 
-                                'english_grade',
-                                'social_studies_grade',
-                                'science_grade',
-                                'average_grade')              
-
 
 def get_students_from_user():
     end_of_user_inputs_flag = 0
@@ -85,34 +88,33 @@ def get_students_from_user():
         num_of_grades = 0
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the name of student # {counter}: ')
         user_input = validate_name(user_input)
-        single_student_dict['name'] = user_input
+        name = user_input
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the group of student # {counter}: ')
-        single_student_dict['group'] = user_input
+        group = user_input
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the grade of the \'Spanish\' signature of student # {counter}: ')
         user_input = validate_grade(user_input)
-        single_student_dict['spanish_grade'] = user_input
+        spanish_grade = user_input
         total_grade += user_input
         num_of_grades += 1
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the grade of the \'English\' signature of student # {counter}: ')
         user_input = validate_grade(user_input)
-        single_student_dict['english_grade'] = user_input
+        english_grade = user_input
         total_grade += user_input
         num_of_grades += 1
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the grade of the \'Social studies\' signature of student # {counter}: ')
         user_input = validate_grade(user_input)
-        single_student_dict['social_studies_grade'] = user_input
+        social_studies_grade = user_input
         total_grade += user_input
         num_of_grades += 1
         user_input = input(f'-I-(actions.py:get_students_from_user): Please provide the grade of the \'Science\' signature of student # {counter}: ')
         user_input = validate_grade(user_input)
-        single_student_dict['science_grade'] = user_input
+        science_grade = user_input
         total_grade += user_input
         num_of_grades += 1
         average_grade = round(total_grade/num_of_grades) 
-        single_student_dict['average_grade'] = average_grade
-        new_student = Student(single_student_dict)
+        average_grade = average_grade
+        new_student = Student(name, group, spanish_grade, english_grade, social_studies_grade, science_grade, average_grade)
         list_of_students.append(new_student)
-        single_student_dict = {}
         user_input = input(f'-I-(actions.py:get_students_from_user): Do you want to provide another student? (Y/N) ')
         user_input = validate_Y_N_question(user_input)
         if (user_input == "N"):
@@ -124,9 +126,7 @@ def get_students_from_user():
 
 def print_all_students_data(list_of_students):
     # Extract the keys (column names) from the first dictionary
-    from tabulate import tabulate
     if(len(list_of_students)):
-        import inspect
         test_obj = list_of_students[0]
         """attributes_names = [attr for attr in dir(test_obj) if not callable(getattr(test_obj, attr)) and not attr.startswith("__")]
            headers = sorted(attributes_names)"""
@@ -153,7 +153,6 @@ def print_top_3_students(list_of_students):
         print("\n")
     else:
         print(f'-E-(actions.py:print_top_3_students): The available data corresponds to less than three students. Please make sure data from at least three students is available (either by manually providing it or by importing a CSV file before running this function).\n')
-
 
 
 def print_average_of_all_students(list_of_students):

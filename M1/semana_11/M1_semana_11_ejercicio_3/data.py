@@ -1,6 +1,9 @@
 import csv
 from actions import validate_Y_N_question
 from actions import Student
+from pathlib import Path
+import os
+
 
 def validate_name_from_csv(name):
     import re
@@ -29,21 +32,19 @@ def validate_grade_from_csv(grade):
 def validate_data_from_CSV(existing_list_of_students):
     validated_list_of_students = []
     for student in existing_list_of_students:
-        new_student_dict = {}
-        new_student_dict['name'] = validate_name_from_csv(student.name)
-        new_student_dict['group'] = student.group
-        new_student_dict['spanish_grade'] = validate_grade_from_csv(student.spanish_grade)
-        new_student_dict['english_grade'] = validate_grade_from_csv(student.english_grade)
-        new_student_dict['social_studies_grade'] = validate_grade_from_csv(student.social_studies_grade)
-        new_student_dict['science_grade'] = validate_grade_from_csv(student.science_grade)
-        new_student_dict['average_grade'] = validate_grade_from_csv(student.average_grade)
-        validated_list_of_students.append(Student(new_student_dict))
+        name = validate_name_from_csv(student.name)
+        group = student.group
+        spanish_grade = validate_grade_from_csv(student.spanish_grade)
+        english_grade = validate_grade_from_csv(student.english_grade)
+        social_studies_grade = validate_grade_from_csv(student.social_studies_grade)
+        science_grade = validate_grade_from_csv(student.science_grade)
+        average_grade = validate_grade_from_csv(student.average_grade)
+        validated_student = Student(name, group, spanish_grade, english_grade, social_studies_grade, science_grade, average_grade)
+        validated_list_of_students.append(validated_student)
     return validated_list_of_students
 
 
 def export_current_data_to_output_CSV(list_of_students, csv_path, imported_csv_flag):
-    from pathlib import Path
-    import os
     file_path = Path(csv_path)
     user_opt = "Y"
     if (imported_csv_flag == 0 and file_path.exists() and os.path.getsize(csv_path) > 0):
@@ -63,7 +64,6 @@ def export_current_data_to_output_CSV(list_of_students, csv_path, imported_csv_f
                         for header in headers:
                             tmp_attributes_list.append(str(getattr(student, str(header))))
                         writer.writerow(tmp_attributes_list)
-
             except IOError:
                 print(f'-E-(data.py:export_current_data_to_output_CSV): An error showed up while trying to write the csv file \'{csv_path}\''
                     f'-I-(data.py:export_current_data_to_output_CSV): Please verify the output directory exists,' 
@@ -81,21 +81,21 @@ def import_existing_data_from_CSV(csv_path):
     existing_list_of_students = []
     try: 
         counter = 0
-        headers = []
         with open(csv_path, mode='r', newline='', encoding='utf-8') as file:
             reader = csv.reader(file)
             for row in reader:
                 if(counter == 0):
                     counter += 1
-                    headers = row
                 else:
-                    tmp_attributes_dict = {}
-                    tmp_attributes_list = row
-                    for i, attribute_name in enumerate(headers):
-                        key = headers[i].strip()
-                        value = tmp_attributes_list[i].strip()
-                        tmp_attributes_dict[key] = value
-                    existing_list_of_students.append(Student(tmp_attributes_dict)) 
+                    name = row[0]
+                    group = row[1]
+                    spanish_grade =  row[2]
+                    english_grade =  row[3]
+                    social_studies_grade =  row[4]
+                    science_grade =  row[5]
+                    average_grade =  row[6]
+                    student = Student(name, group, spanish_grade, english_grade, social_studies_grade, science_grade, average_grade)
+                    existing_list_of_students.append(student) 
         return validate_data_from_CSV(existing_list_of_students)
     except IOError:
         print(f'-E-(data.py:export_current_data_to_output_CSV): An error showed up while trying to read the csv file \'{csv_path}\''
