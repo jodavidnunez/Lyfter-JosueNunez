@@ -13,7 +13,7 @@ def menu ():
                          6. Import available data from existing CSV. 
                          7. Exit program. \n"""
     list_of_student_data_dicts = []
-    csv_path = r'C:\Users\jodav\Documents\Curso_Progra_Lyfter\Lyfter-JosueNunez\semana_10\students_grades.csv'
+    csv_path = r'C:\Users\jodav\Documents\Curso_Progra_Lyfter\Lyfter-JosueNunez\M1\semana_10\students_grades.csv'
     imported_csv_flag = 0
     while (end_program != "Yes"):
         user_opt = input(f'-I-(menu.py:menu): Please choose one of the following options: {menu_options}')

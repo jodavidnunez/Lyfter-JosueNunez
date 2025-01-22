@@ -80,4 +80,5 @@ def import_existing_data_from_CSV(csv_path):
     except IOError:
         print(f'-E-(data.py:export_current_data_to_output_CSV): An error showed up while trying to read the csv file \'{csv_path}\''
               f'-I-(data.py:export_current_data_to_output_CSV): Please verify that \'{csv_path}\' exists and is readable.\n'
-        ) 
+        )
+        exit(1) 
