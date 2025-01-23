@@ -1,3 +1,12 @@
+"""4. Cree las siguientes clases:
+    a. `Head`
+    b. `Torso`
+    c. `Arm`
+    d. `Hand`
+    e. `Leg`
+    f. `Feet`
+    Ahora cree una clase de `Human` y conecte todas las clases de manera lógica por medio de atributos."""
+
 class Torso:
 	def __init__(self, head, right_arm, left_arm, right_leg, left_leg):
 		self.head = head
