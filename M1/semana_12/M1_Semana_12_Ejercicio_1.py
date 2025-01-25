@@ -14,13 +14,33 @@ class InvalidRetrieveOfBalance(Exception):
     pass
 
 
+class NegativeMoneyQuantities(Exception):
+    "Will raise an error if user tries to provide a negative quantity of money to any method"
+    pass
+
+
+def decorator_validate_positive_quantities(func):
+    def wrapper(self, money_qty):
+        try:
+            if (money_qty < 0):
+                raise NegativeMoneyQuantities
+        except:
+            print(f'-E-(decorator_validate_positive_quantities): All money quantities must be positive.')
+        else:
+            func(self, money_qty)
+    return wrapper
+
+
 class BankAccount:
     def __init__(self, balance):
         self.balance = balance
 
+    @decorator_validate_positive_quantities
     def add_to_balance(self, money_to_add):
         self.balance += money_to_add
         print(f'-I-: Added \'{money_to_add}\' successfully. Current balance: {self.balance}')
+    
+    @decorator_validate_positive_quantities
     def retrieve_from_balance(self, money_to_retrieve):
         self.balance -= money_to_retrieve
         print(f'-I-: Retrieved \'{money_to_retrieve}\' successfully. Current balance: {self.balance}')
@@ -29,7 +49,8 @@ class BankAccount:
 class SavingsAccount(BankAccount):
     def __init__(self, min_balance, balance):
         self.min_balance = min_balance
-        self.balance = balance
+        #BankAccount.__init__(self, balance)
+        super().__init__(balance)
     
     def retrieve_from_balance(self, money_to_retrieve):
         try:
@@ -47,5 +68,5 @@ class SavingsAccount(BankAccount):
 
 test_account = SavingsAccount(min_balance=100,balance=150)
 test_account.add_to_balance(money_to_add=200)
-test_account.retrieve_from_balance(money_to_retrieve=150)
 test_account.retrieve_from_balance(money_to_retrieve=300)
+test_account.retrieve_from_balance(money_to_retrieve=-150)
