@@ -9,21 +9,32 @@
 from datetime import date
 
 
-def decorator_validate_user_age(func):
+class AgeLessThan18Exception(Exception):
+    "Will raise an error if a provided lists has non-numeric values"
+    pass
+
+
+def decorator_validate_age(func):
     def wrapper(*args):
-        age = func(*args)
-        if (age < 18):
-            raise ValueError(f'-E-(decorator_user_age): User is under 18!')
-        return age
+        acceptable_age = 18
+        age = func(*args) 
+        try: 
+            if (age.age < acceptable_age):
+                raise AgeLessThan18Exception
+        except:
+            print(f'-E-(decorator_validate_age): Provided invalid age {age.age}. Only ages >={acceptable_age} are acceptable.')
+        else:
+            print(f'-I-(decorator_validate_age): Provided valid age: {age.age}')
+            return age 
     return wrapper
 
 
+@decorator_validate_age 
 class User:    
     def __init__(self, date_of_birth):
         self.date_of_birth = date_of_birth
     
     @property
-    @decorator_validate_user_age 
     def age(self):
         # Debemos calcular la edad cada vez que la usemos
         # ya que va a variar dependiendo de la fecha actual
@@ -38,7 +49,4 @@ class User:
         )
 
 good_user = User(date(1990, 1, 1))
-print(f"Age: {good_user.age}")
-
 bad_user = User(date(2020, 1, 1))
-print(f"Age: {bad_user.age}")
