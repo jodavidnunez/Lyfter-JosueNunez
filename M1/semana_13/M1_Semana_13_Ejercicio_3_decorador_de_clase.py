@@ -16,17 +16,20 @@ class AgeLessThan18Exception(Exception):
 
 def decorator_validate_age(func):
     def wrapper(*args):
-        for user in args:
-            try: 
-                if (user.age < 18):
-                    raise AgeLessThan18Exception
-            except:
-                print(f'-E-(decorator_validate_age): Invalid age, user age \'{user.age}\' must be >=18')
-            else:
-                print(f'-I-(decorator_validate_age): Valid age provided! User age \'{user.age}\' is >=18')
+        acceptable_age = 18
+        user = func(*args) 
+        try: 
+            if (user.age < acceptable_age):
+                raise AgeLessThan18Exception
+        except:
+            print(f'-E-(decorator_validate_age): Provided invalid age {user.age}. Only ages >={acceptable_age} are acceptable.')
+        else:
+            print(f'-I-(decorator_validate_age): Provided valid age: {user.age}')
+        return user 
     return wrapper
 
 
+@decorator_validate_age 
 class User:    
     def __init__(self, date_of_birth):
         self.date_of_birth = date_of_birth
@@ -45,13 +48,16 @@ class User:
             )
         )
 
-
-@decorator_validate_age 
+#@decorator_validate_age 
 def access_restricted_area(user):
-    pass
+    if (user.age) > 18:
+        print(f'-I-(access_restricted_area): User age is valid: {user.age}')   
+    else: 
+        print(f'-E-(access_restricted_area): User age is NOT valid: {user.age} must be >= 18.')   
+
 
 good_user = User(date(1990, 1, 1))
-access_restricted_area(good_user)
+#access_restricted_area(good_user)
 
 bad_user = User(date(2020, 1, 1))
-access_restricted_area(bad_user)
+#access_restricted_area(good_user)
