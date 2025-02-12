@@ -4,29 +4,37 @@
     3. No se permite el uso de tipos de datos compuestos como `lists`, `dicts` o `tuples` ni módulos como `collections`."""
 
 
+class EmptyDataStructure(Exception):
+    "Will raise an error if user tries to remove a node from an empty data structure"
+    pass
+
+
 class Node:
+
     data: str
-    next: "Node"
 
-    def __init__(self, data, next=None):
-        self.next = next
+    def __init__(self, data, next=None, prev=None):
         self.data = data
+        self.next = next
+        self.prev = prev
 
 
-class LinkedList:
+class DoubleEndedQueue:
+    
     head: Node
+    tail: Node
 
-    def __init__(self, head):
+    def __init__(self, head, tail):
         self.head = head
+        self.tail = tail
 
     def print_nodes(self):
         node = self.head
         while node is not None:
-            print(f'Data: {node.data}')
+            if node.next is not None:
+                next_node = node.next
+                print(f'{node.data} => {next_node.data}')
             node = node.next
-
-
-class DoubleEndedQueue(LinkedList):
 
     def push_left(self, new_node):
         current_node = self.head
@@ -34,35 +42,64 @@ class DoubleEndedQueue(LinkedList):
         self.head.next = current_node
 
     def pop_left(self):
-        self.head = self.head.next
+        try:
+            if self.head.next is None:
+                raise EmptyDataStructure
+        except EmptyDataStructure:
+            print(f'-E-(pop_left): DoubleEndedQueue needs at least two elements -head and tail-.')
+        else:
+            self.head = self.head.next
     
     def push_right(self, new_node):
-        current_node = self.head
-        while current_node.next is not None:
-            current_node = current_node.next
-        current_node.next = new_node
+        previous_tail = self.tail
+        previous_tail.next = new_node
+        new_node.prev = previous_tail
+        self.tail = new_node
 
     def pop_right(self):
-        current_node = self.head
-        while current_node.next is not None:
-            previous_node = current_node
-            current_node = current_node.next
-        previous_node.next = None
+        try:
+            if self.tail.prev is None:
+                raise EmptyDataStructure
+        except EmptyDataStructure:
+            print(f'-E-(pop_right): DoubleEndedQueue needs at least two elements -head and tail-.')
+        else:
+            self.tail = self.tail.prev
+            self.tail.next = None
 
 
 cuarto  = Node("Test4")
 tercero = Node("Test3", cuarto)
 segundo = Node("Test2", tercero)
 primero = Node("Test1", segundo)
-linked_list = DoubleEndedQueue(primero)
+segundo.prev = primero
+tercero.prev = segundo
+cuarto.prev = tercero
+
+double_ended_queue_inst = DoubleEndedQueue(primero, cuarto)
 new_node = Node("NEW_left!")
-linked_list.push_left(new_node)
+double_ended_queue_inst.push_left(new_node)
 new_node = Node("NEW_left2!")
-linked_list.push_left(new_node)
+double_ended_queue_inst.push_left(new_node)
 new_node = Node("NEW_right!")
-linked_list.push_right(new_node)
+double_ended_queue_inst.push_right(new_node)
 new_node = Node("NEW_right2!")
-linked_list.push_right(new_node)
-linked_list.pop_left()
-linked_list.pop_right()
-linked_list.print_nodes()
+double_ended_queue_inst.push_right(new_node)
+double_ended_queue_inst.pop_left()
+double_ended_queue_inst.pop_right()
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()
+print("\n---------------------------\n")
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()
+print("\n---------------------------\n")
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()
+print("\n---------------------------\n")
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()
+print("\n---------------------------\n")
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()
+print("\n---------------------------\n")
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_right()

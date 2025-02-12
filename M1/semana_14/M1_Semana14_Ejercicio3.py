@@ -2,10 +2,14 @@
     1. Debe incluir un método para hacer `print` de toda la estructura.
     2. No se permite el uso de tipos de datos compuestos como `lists`, `dicts` o `tuples` ni módulos como `collections`."""
 
+
+class EmptyDataStructure(Exception):
+    "Will raise an error if user tries to remove a node from an empty data structure"
+    pass
+
+
 class Node:
     data: str
-    left: "Node"
-    right: "Node"
 
     def __init__(self, data, left=None, right=None):
         self.left = left
@@ -14,15 +18,21 @@ class Node:
 
 
 class Tree:
-    root = "Node"    
+    root = Node   
      
     def __init__(self, root):
         self.root = root
 
     def print_tree(self):
-        node = self.root
-        if node is not None:
-            self._print_tree_recursive(node)
+        try:
+            if self.root is None:
+                raise EmptyDataStructure
+        except EmptyDataStructure:
+            print(f'-E-(print_tree): BinaryTree is empty.')
+        else:
+            node = self.root
+            if node is not None:
+                self._print_tree_recursive(node)
 
     def _print_tree_recursive(self, node, level=0):
         if node != None:
@@ -44,4 +54,7 @@ c.left = f
 c.right = g
 
 tree = Tree(a)
+tree.print_tree()
+
+tree.root = None
 tree.print_tree()
