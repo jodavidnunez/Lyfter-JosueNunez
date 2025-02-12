@@ -3,11 +3,6 @@
     2. No se permite el uso de tipos de datos compuestos como `lists`, `dicts` o `tuples` ni módulos como `collections`."""
 
 
-class EmptyDataStructure(Exception):
-    "Will raise an error if user tries to remove a node from an empty data structure"
-    pass
-
-
 class Node:
     data: str
 
@@ -18,21 +13,15 @@ class Node:
 
 
 class Tree:
-    root = Node   
      
     def __init__(self, root):
         self.root = root
 
     def print_tree(self):
-        try:
-            if self.root is None:
-                raise EmptyDataStructure
-        except EmptyDataStructure:
+        if self.root is None:
             print(f'-E-(print_tree): BinaryTree is empty.')
         else:
-            node = self.root
-            if node is not None:
-                self._print_tree_recursive(node)
+            self._print_tree_recursive(self.root)
 
     def _print_tree_recursive(self, node, level=0):
         if node != None:
