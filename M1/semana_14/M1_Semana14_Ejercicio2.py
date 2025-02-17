@@ -4,11 +4,6 @@
     3. No se permite el uso de tipos de datos compuestos como `lists`, `dicts` o `tuples` ni módulos como `collections`."""
 
 
-class EmptyDataStructure(Exception):
-    "Will raise an error if user tries to remove a node from an empty data structure"
-    pass
-
-
 class Node:
 
     data: str
@@ -20,86 +15,136 @@ class Node:
 
 
 class DoubleEndedQueue:
-    
-    head: Node
-    tail: Node
 
-    def __init__(self, head, tail):
+    def __init__(self, head=None, tail=None):
         self.head = head
         self.tail = tail
 
     def print_nodes(self):
         node = self.head
+        next_node_data = "None"
         while node is not None:
             if node.next is not None:
                 next_node = node.next
                 print(f'{node.data} => {next_node.data}')
+            else: 
+                print(f'{node.data} => {next_node_data}')
             node = node.next
+        if self.head is None:
+            print(f'-E-: DoubleEndedQueue is currently empty.')
 
     def push_left(self, new_node):
-        current_node = self.head
-        self.head = new_node
-        self.head.next = current_node
+        if self.head is None:
+            self.head = self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+
+    def push_right(self, new_node):
+        if self.head is None:
+            self.head = self.tail = new_node
+        else: 
+            new_node.prev = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
 
     def pop_left(self):
-        try:
-            if self.head.next is None:
-                raise EmptyDataStructure
-        except EmptyDataStructure:
-            print(f'-E-(pop_left): DoubleEndedQueue needs at least two elements -head and tail-.')
+        if self.head is None:
+            self.tail = None
+            print(f'-E-(pop_left): DoubleEndedQueue is already empty.')
+        elif self.head.next is None:
+            self.head = None
         else:
             self.head = self.head.next
-    
-    def push_right(self, new_node):
-        previous_tail = self.tail
-        previous_tail.next = new_node
-        new_node.prev = previous_tail
-        self.tail = new_node
+            self.head.prev = None
 
     def pop_right(self):
-        try:
-            if self.tail.prev is None:
-                raise EmptyDataStructure
-        except EmptyDataStructure:
-            print(f'-E-(pop_right): DoubleEndedQueue needs at least two elements -head and tail-.')
+        if self.tail is None:
+            self.head = None
+            print(f'-E-(pop_right): DoubleEndedQueue is already empty.')
+        elif self.tail.prev is None:
+            self.tail = None
         else:
-            self.tail = self.tail.prev
+            self.tail = self.tail.prev  
             self.tail.next = None
 
 
-cuarto  = Node("Test4")
-tercero = Node("Test3", cuarto)
-segundo = Node("Test2", tercero)
-primero = Node("Test1", segundo)
-segundo.prev = primero
-tercero.prev = segundo
-cuarto.prev = tercero
+# 1. Define nodes
+node_minus_two = Node("-2")
+node_minus_one = Node("-1")
+node_zero = Node("0")
+node_one = Node("1")
+node_two = Node("2")
 
-double_ended_queue_inst = DoubleEndedQueue(primero, cuarto)
-new_node = Node("NEW_left!")
-double_ended_queue_inst.push_left(new_node)
-new_node = Node("NEW_left2!")
-double_ended_queue_inst.push_left(new_node)
-new_node = Node("NEW_right!")
-double_ended_queue_inst.push_right(new_node)
-new_node = Node("NEW_right2!")
-double_ended_queue_inst.push_right(new_node)
+# 2. Connect nodes
+"""
+node_minus_two.next = node_minus_one
+node_minus_one.prev = node_minus_two
+node_minus_one.next = node_zero
+node_zero.prev = node_minus_one
+node_zero.next = node_one
+node_one.prev = node_zero
+node_one.next = node_two
+node_two.prev = node_one
+"""
+
+# 3. Create double ended queue
+double_ended_queue_inst = DoubleEndedQueue()
+
+# 4. Testing print of empty double ended queue
+print("\n--------PRINT #1: Testing print of empty double ended queue---------------\n")
+double_ended_queue_inst.print_nodes()
+
+# 5. Add head node and print
+double_ended_queue_inst.push_right(node_zero)
+print("\n--------PRINT #2: Add head node and print--------------\n")
+double_ended_queue_inst.print_nodes()
+
+# 6. Test push right and print
+print("\n--------PRINT #3: Test push right and print--------------\n")
+double_ended_queue_inst.push_right(node_one)
+double_ended_queue_inst.push_right(node_two)
+double_ended_queue_inst.print_nodes()
+
+#7. Test push left and print
+print("\n--------PRINT #4: Test push left and print--------------\n")
+double_ended_queue_inst.push_left(node_minus_one)
+double_ended_queue_inst.push_left(node_minus_two)
+double_ended_queue_inst.print_nodes()
+
+#8. Test one pop left and print
+print("\n--------PRINT #5: Test one pop left and print--------------\n")
 double_ended_queue_inst.pop_left()
+double_ended_queue_inst.print_nodes()
+
+#9. Test one pop right and print
+print("\n--------PRINT #6: Test one pop right and print--------------\n")
 double_ended_queue_inst.pop_right()
 double_ended_queue_inst.print_nodes()
-double_ended_queue_inst.pop_right()
-print("\n---------------------------\n")
+
+# 10. Test empty the whole DoubleEndedQueue with pop left
+print("\n--------PRINT #7:Test empty the whole DoubleEndedQueue with pop left --------------\n")
+double_ended_queue_inst.pop_left()
+double_ended_queue_inst.pop_left()
+double_ended_queue_inst.pop_left()
+double_ended_queue_inst.print_nodes()
+double_ended_queue_inst.pop_left()
+
+# 10. Reset the data structure and test empty the whole DoubleEndedQueue with pop right
+print("\n--------PRINT #8:  Reset the data structure and test empty the whole DoubleEndedQueue with pop right --------------\n")
+double_ended_queue_inst.push_left(node_zero)
+double_ended_queue_inst.push_right(node_one)
+double_ended_queue_inst.push_right(node_two)
+double_ended_queue_inst.push_left(node_minus_one)
+double_ended_queue_inst.push_left(node_minus_two)
+print("\n--------Initial Double Ended Queue--------------\n")
 double_ended_queue_inst.print_nodes()
 double_ended_queue_inst.pop_right()
-print("\n---------------------------\n")
-double_ended_queue_inst.print_nodes()
 double_ended_queue_inst.pop_right()
-print("\n---------------------------\n")
-double_ended_queue_inst.print_nodes()
 double_ended_queue_inst.pop_right()
-print("\n---------------------------\n")
-double_ended_queue_inst.print_nodes()
 double_ended_queue_inst.pop_right()
-print("\n---------------------------\n")
-double_ended_queue_inst.print_nodes()
 double_ended_queue_inst.pop_right()
+double_ended_queue_inst.pop_right()
+print("\n--------Final Double Ended Queue--------------\n")
+double_ended_queue_inst.print_nodes()
