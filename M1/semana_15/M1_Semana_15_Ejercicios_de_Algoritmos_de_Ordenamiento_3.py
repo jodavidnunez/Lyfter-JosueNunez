@@ -2,94 +2,45 @@
 
 
 class Node:
-    def __init__(self, data):
-        self.data = int(data)
-        self.next = None
+    data: int
+    next: "Node"
 
-class Stack:
-    
-    def __init__(self, head=None):
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+
+class LinkedList:
+    head: Node
+    def __init__(self, head):
         self.head = head
-        self.count = 0
 
-    def print_nodes(self):
-        node = self.head
-        next_node_data = "None"
-        while node is not None:
-            if node.next is not None:
-                next_node = node.next
-                print(f'{node.data} => {next_node.data}')
-            else: 
-                print(f'{node.data} => {next_node_data}')
-            node = node.next
-        if self.head is None:
-            print(f'-E-(print_nodes): Stack is currently empty.')
+    def print_structure(self):
+        current_node = self.head
+        while (current_node is not None):
+            print(current_node.data)
+            current_node = current_node.next
 
-    def print_stack(self):
-        current = self.head
-        while current:
-            print(current.data, end=" ")
-            current = current.next
-        print()
-
-    def push(self, new_data):
-        new_node = Node(new_data)
-        new_node.next = self.head
-        self.head = new_node
-        self.count += 1
-
-    def pop(self):
-        if self.is_empty():
-            raise IndexError("-E-(pop): Pop from empty stack")
-        data = self.head.data
-        self.head = self.head.next
-        self.count -= 1
-        return data
-
-    def size(self):
-        return self.count
-
-    def is_empty(self):
-        return self.head is None
-
-    def peek(self):
-        if self.is_empty():
-            raise IndexError("-E-(peek): Peek from empty stack")
-        return self.head.data
-    
-    def bubble_sort(self):
-        if self.is_empty():
+    def my_bubble_sort(self):
+        if not self.head:
             return
-        
-        for _ in range(self.size()):
-            already_sorted_flag = True
-            tmp_stack = Stack()
-            while not self.is_empty():
-                tmp_data = self.pop()
-                if not tmp_stack.is_empty(): 
-                    current_head_data = tmp_stack.peek()
-                    if int(current_head_data) > int(tmp_data):
-                        tmp_stack.push(tmp_data)
-                        tmp_data = tmp_stack.pop()
-                        already_sorted_flag = False
-                    #print(f'{current_head_data} vs {tmp_data}')
-                tmp_stack.push(tmp_data)
-            while not tmp_stack.is_empty():
-                tmp = tmp_stack.pop()
-                self.push(tmp)
-            if already_sorted_flag is True:
-                break    
+        outer_loop_node = self.head
+        swapped = True
+        while outer_loop_node is not None or swapped is True:
+            swapped = False
+            inner_loop_node = self.head
+            while inner_loop_node.next is not None: 
+                if inner_loop_node.data > inner_loop_node.next.data:
+                    inner_loop_node.data, inner_loop_node.next.data = inner_loop_node.next.data, inner_loop_node.data
+                    swapped = True
+                inner_loop_node = inner_loop_node.next
+            outer_loop_node = outer_loop_node.next
 
-# 1. Create stack
-stack_inst = Stack()
 
-# 2. Add elements to stack in wrong order
-stack_inst.push(0)
-stack_inst.push(-1)
-stack_inst.push(1)
-stack_inst.push(-2)
-stack_inst.push(2)
+third_node = Node(-3)
+second_node = Node(3, third_node)
+first_node = Node(0, second_node)
 
-# 3.stack_inst.print_nodes()
-stack_inst.bubble_sort()
-stack_inst.print_stack()
+linked_list = LinkedList(first_node)
+linked_list.my_bubble_sort()
+linked_list.print_structure()
