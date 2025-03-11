@@ -13,11 +13,11 @@ def is_list_all_numbers(input_list):
 
 def add_up_list_elements(input_list):
     if not isinstance(input_list, list):
-        return "NOT A LIST"
+        raise TypeError("Input must be a list")
     if len(input_list) == 0:
-        return "EMPTY LIST"
+        raise ValueError("List is empty")
     if is_list_all_numbers(input_list) is False:
-        return "NOT ALL NUMBERS" 
+        raise ValueError("List must contain only numbers")  
     result = 0
     for elem in input_list:
         result += elem
@@ -34,6 +34,8 @@ print (result)
     b. “Hola mundo” → “odnum aloH”"""
 
 def reverse_string(input_string):
+    if len(input_string) == 0:
+        raise ValueError("String is empty")
     result_string = ""
     for index in range(len(input_string) -1, -1, -1):
         result_string += input_string[index]
@@ -50,6 +52,8 @@ print(reversed_string)
 
 
 def count_lower_and_upper_case_characters(input_string):
+    if len(input_string) == 0:
+        raise ValueError("String is empty")
     count_upper = 0
     count_lower = 0
     for char in input_string:
@@ -72,6 +76,8 @@ print(text)
 
 
 def get_sorted_string(input_string):
+    if len(input_string) == 0:
+        raise ValueError("String is empty")
     input_list = input_string.split("-")
     input_list.sort()
     output_string = "-".join(map(str,input_list))
@@ -106,6 +112,8 @@ def get_single_prime_number(num):
     
 
 def get_prime_numbers_list(input_list):
+    if len(input_list) == 0:
+        raise ValueError("List is empty")
     output_list = []
     for num in input_list:
         if(get_single_prime_number(num) is True):

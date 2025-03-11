@@ -12,9 +12,11 @@ def is_list_all_numbers(input_list):
 
 def my_bubble_sort(input_list):
     if not isinstance(input_list, list):
-        return "NOT A LIST"
+        raise TypeError("Input must be a list")
+    if len(input_list) == 0:
+        raise ValueError("List is empty")
     if is_list_all_numbers(input_list) is False:
-        return "NOT ALL NUMBERS" 
+        raise ValueError("List must contain only numbers")  
     input_list_size = len(input_list)
     for outer_index in range(input_list_size - 1):
         already_sorted_flag = True

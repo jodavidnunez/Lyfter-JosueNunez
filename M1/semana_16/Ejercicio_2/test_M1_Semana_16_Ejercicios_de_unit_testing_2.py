@@ -1,11 +1,13 @@
 """Cree unit tests para probar 3 casos de éxito distintos de cada uno de los ejercicios de semana 6 (exceptuando el 1 y 2)."""
 
 import unittest
-from M1_Semana_16_Ejercicios_de_unit_testing_2 import add_up_list_elements
-from M1_Semana_16_Ejercicios_de_unit_testing_2 import reverse_string
-from M1_Semana_16_Ejercicios_de_unit_testing_2 import count_lower_and_upper_case_characters
-from M1_Semana_16_Ejercicios_de_unit_testing_2 import get_sorted_string
-from M1_Semana_16_Ejercicios_de_unit_testing_2 import get_prime_numbers_list
+from M1_Semana_16_Ejercicios_de_unit_testing_2 import (
+    add_up_list_elements,
+    reverse_string,
+    count_lower_and_upper_case_characters,
+    get_sorted_string,
+    get_prime_numbers_list
+)
 
 
 
@@ -47,11 +49,12 @@ class TestAddUpListElements(unittest.TestCase):
     
         # Act: Ejecutar la función a probar
         input_list = []
-        actual_result = add_up_list_elements(input_list)
+        with self.assertRaises(ValueError) as context: 
+            add_up_list_elements(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "EMPTY LIST"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "List is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 
@@ -83,14 +86,15 @@ class TestReverseString(unittest.TestCase):
 
     def test_reverse_string_input_is_an_empty_string(self):
         # Arrange: Preparamos los datos de entrada
+        input_string = ""
     
         # Act: Ejecutar la función a probar
-        input_string = ""
-        actual_result = reverse_string(input_string)
+        with self.assertRaises(ValueError) as context: 
+            reverse_string(input_string)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = ""
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "String is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 
@@ -112,6 +116,7 @@ class TestCountLowerAndUpperCaseCharacters(unittest.TestCase):
     def test_count_lower_and_upper_case_characters_big_string(self):
         # Arrange: Preparamos los datos de entrada
         input_string = "A10B12C13D14e15f16g17h18i19J20K21L22M23n24ñ25o26p27Q28R29S30T31U32v33w34x35y36ZJOSUEdavidNUNEZelizondoSANTIAGOnunezPEREZgriseldaMariaPerez" 
+        
         # Act: Ejecutar la función a probar
         actual_result = count_lower_and_upper_case_characters(input_string)
         
@@ -122,14 +127,15 @@ class TestCountLowerAndUpperCaseCharacters(unittest.TestCase):
 
     def test_count_lower_and_upper_case_characters_input_is_an_empty_string(self):
         # Arrange: Preparamos los datos de entrada
+        input_string = ""
     
         # Act: Ejecutar la función a probar
-        input_string = ""
-        actual_result = count_lower_and_upper_case_characters(input_string)
+        with self.assertRaises(ValueError) as context: 
+            count_lower_and_upper_case_characters(input_string)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "There are 0 upper cases and 0 lower cases"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "String is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 
@@ -161,14 +167,15 @@ class TestGetSortedString(unittest.TestCase):
 
     def test_get_sorted_string_input_is_an_empty_string(self):
         # Arrange: Preparamos los datos de entrada
+        input_string = ""
     
         # Act: Ejecutar la función a probar
-        input_string = ""
-        actual_result = get_sorted_string(input_string)
+        with self.assertRaises(ValueError) as context: 
+            get_sorted_string(input_string)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = ""
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "String is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 
@@ -207,14 +214,15 @@ class TestGetPrimeNumberList(unittest.TestCase):
 
     def test_get_prime_numbers_list_input_is_an_empty_list(self):
         # Arrange: Preparamos los datos de entrada
-    
-        # Act: Ejecutar la función a probar
         input_list = []
-        actual_result = get_prime_numbers_list(input_list)
+        
+        # Act: Ejecutar la función a probar
+        with self.assertRaises(ValueError) as context: 
+            get_prime_numbers_list(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = []
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "List is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 

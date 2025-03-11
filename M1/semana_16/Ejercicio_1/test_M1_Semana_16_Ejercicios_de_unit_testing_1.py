@@ -52,26 +52,28 @@ class TestMyBubbleSort(unittest.TestCase):
 
     def test_my_bubble_sort_input_is_an_empty_list(self):
         # Arrange: Preparamos los datos de entrada
+        input_list = []
     
         # Act: Ejecutar la función a probar
-        input_list = []
-        actual_result = my_bubble_sort(input_list)
+        with self.assertRaises(ValueError) as context: 
+            my_bubble_sort(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = []
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "List is empty"
+        self.assertEqual(str(context.exception), expected_result)
 
 
     def test_my_bubble_sort_input_list_is_not_a_dictionary(self):
         # Arrange: Preparamos los datos de entrada
+        input_list = {"hola":"adios", "como estas":"bien y vos"}
     
         # Act: Ejecutar la función a probar
-        input_list = {"hola":"adios", "como estas":"bien y vos"}
-        actual_result = my_bubble_sort(input_list)
+        with self.assertRaises(TypeError) as context: 
+            my_bubble_sort(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "NOT A LIST"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "Input must be a list"
+        self.assertEqual(str(context.exception), expected_result)
 
 
     def test_my_bubble_sort_input_list_is_not_a_tuple(self):
@@ -79,11 +81,12 @@ class TestMyBubbleSort(unittest.TestCase):
     
         # Act: Ejecutar la función a probar
         input_list = (44, 0, -99 , 7, 3, -1000)
-        actual_result = my_bubble_sort(input_list)
+        with self.assertRaises(TypeError) as context: 
+            my_bubble_sort(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "NOT A LIST"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "Input must be a list"
+        self.assertEqual(str(context.exception), expected_result)
 
 
     def test_my_bubble_sort_input_list_is_not_a_set(self):
@@ -91,23 +94,25 @@ class TestMyBubbleSort(unittest.TestCase):
     
         # Act: Ejecutar la función a probar
         input_list = {1, 100, 1000, 9, 99}
-        actual_result = my_bubble_sort(input_list)
+        with self.assertRaises(TypeError) as context: 
+            my_bubble_sort(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "NOT A LIST"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "Input must be a list"
+        self.assertEqual(str(context.exception), expected_result)
 
 
     def test_my_bubble_sort_input_list_is_not_all_numbers(self):
         # Arrange: Preparamos los datos de entrada
+        input_list = [-1 , 0, 1, [2, 3]]
     
         # Act: Ejecutar la función a probar
-        input_list = [-1 , 0, 1, [2, 3]]
-        actual_result = my_bubble_sort(input_list)
+        with self.assertRaises(ValueError) as context: 
+            my_bubble_sort(input_list)
         
         # Assert: Verificamos que el actual_result sea el esperado
-        expected_result = "NOT ALL NUMBERS"
-        self.assertEqual(actual_result, expected_result)
+        expected_result = "List must contain only numbers"
+        self.assertEqual(str(context.exception), expected_result)
 
 
 
