@@ -1,6 +1,7 @@
 import FreeSimpleGUI as sg # type: ignore
 from logic import Rubric
 from logic import transform_objects_list_to_table_data
+from logic import get_categories_from_csv_data
 from data import import_existing_data_from_CSV
 from data import export_current_data_to_output_CSV
 
@@ -8,20 +9,21 @@ def create_main_window():
     csv_path = r'C:\Users\jodav\Documents\Curso_Progra_Lyfter\Lyfter-JosueNunez\M1\semana_17\Project_1\control.csv'
     data_obj_list = []
     data_from_csv = import_existing_data_from_CSV(csv_path)
+    category_dict = {}
     if data_from_csv is not None:
         data_obj_list = data_from_csv
+        category_dict = get_categories_from_csv_data(data_obj_list)
     BTN1 = sg.Button("Add Category", key='ADD_CATEGORY', size=(20, 1))
     BTN2 = sg.Button("Add Expense", key='ADD_EXPENSE', size=(20, 1))
     BTN3 = sg.Button("Add Income", key='ADD_INCOME', size=(20, 1))
     button_column = [[BTN1], [BTN2], [BTN3],]
-    headings = ["   Rubric   ", "   Type   ", "   Category   ", "   Amount   "]
+    headings = ["   Category   ", "   Type   ", "   Rubric Name   ", "   Amount   "]
     data = transform_objects_list_to_table_data(data_obj_list)
     TBL1 = sg.Table(values=data, headings=headings, auto_size_columns=True, 
                 display_row_numbers=True, justification='right', num_rows=10, 
                 key='TABLE', size=(None, 200))
     layout = [[sg.Column(button_column), sg.VSeparator(), sg.Column([[TBL1]])]]
     WIN1 = sg.Window("Personal Finance Management System", layout, resizable=True)
-    category_dict = {}
     while True: 
         event, values = WIN1.read()
         tmp_categories = {}
@@ -118,7 +120,7 @@ def create_add_rubric_window(data_for_drop_down_list, rubric_type):
                     continue
             if values['DROP_DOWN']:
                 tmp_category = values['DROP_DOWN']
-            tmp_obj = Rubric(tmp_category, rubric_type, tmp_name, tmp_amount)
+            tmp_obj = Rubric(tmp_name, rubric_type, tmp_category, tmp_amount)
             is_valid, error_message = tmp_obj.validate_rubric()
             if is_valid:
                 objs_list.append(tmp_obj)

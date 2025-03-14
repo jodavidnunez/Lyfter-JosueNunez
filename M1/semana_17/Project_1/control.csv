@@ -1,6 +1,9 @@
 name,rubric_type,category,amount
-Food,Expense,Dinner,25000.0
-Entertainment,Expense,Cinema,30000.0
-Transport,Expense,Gas,20000.0
-Salary,Income,My_payment,1500000.0
-Freelance,Income,Web_page_1,1000000.0
+Dinner,Expense,Food,25000.0
+Travel_Cancun,Expense,Entertainment,1500000.0
+Gass,Expense,Transportation,30000.0
+Web_page_1,Income,Freelance,1500000.0
+My_paycheck,Income,Salary,2000000.0
+Lunch,Expense,Food,20000.0
+Web_page_2,Income,Freelance,3000000.0
+House_payment,Expense,Loan,200000.0

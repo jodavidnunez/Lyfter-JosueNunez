@@ -59,3 +59,9 @@ def transform_objects_list_to_table_data(data_obj_list):
         return [[obj.category, obj.rubric_type, obj.name, obj.amount] for obj in data_obj_list]
     else:
         return []
+    
+def get_categories_from_csv_data(data_obj_list):
+    if data_obj_list is not None and len(data_obj_list):
+        return {obj.category:obj.rubric_type for obj in data_obj_list}
+    else:
+        return {}
