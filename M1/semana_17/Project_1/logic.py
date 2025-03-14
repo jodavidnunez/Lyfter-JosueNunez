@@ -46,11 +46,11 @@ class Rubric:
             return False, "-E-(update_category): Category can not be empty."
     
 
-    def es_gasto(self):
+    def is_expense(self):
         return self.rubric_type == 'Expense'
 
 
-    def es_ingreso(self):
+    def is_income(self):
         return self.rubric_type == 'Income'
 
 
