@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <form action="confirmation.html" method="post">
+    <h1>Presidential Election Ballot</h1>
+    <div>
+      <p>Please provide your personal information:</p>
+      <ul>
+        <li>
+          <label for="full_name">Full name:</label>
+          <br />
+          <input type="text" id="full_name" name="fullName" required />
+        </li>
+        <br />
+        <li>
+          <label for="email">Email:</label>
+          <br />
+          <input type="text" id="email" name="email" required />
+        </li>
+        <br />
+        <li>
+          <label for="id_number">ID Number:</label>
+          <br />
+          <input type="text" id="id_number" name="idNumber" required />
+        </li>
+        <br />
+        <li>
+          <label for="phone_number">Phone Number:</label>
+          <br />
+          <input type="text" phone="phone_number" name="phoneNumber" required />
+        </li>
+        <br />
+      </ul>
+    </div>
+    <div>
+      <p>Please select your candidate:</p>
+      <div>
+        <label for="candidate_1"></label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="radio"
+          id="candidate_1"
+          name="candidate"
+          value="candidate_1"
+          required
+        />
+        Candidate #1
+      </div>
+      <br />
+      <div>
+        <label for="candidate_2"></label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="radio"
+          id="candidate_2"
+          name="candidate"
+          value="candidate_2"
+        />
+        Candidate #2
+      </div>
+      <br />
+      <div>
+        <label for="candidate_3"></label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="radio"
+          id="candidate_3"
+          name="candidate"
+          value="candidate_3"
+        />
+        Candidate #3
+      </div>
+      <br />
+      <div>
+        <label for="candidate_4"></label>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="radio"
+          id="candidate_4"
+          name="candidate"
+          value="candidate_4"
+        />
+        Candidate #4
+      </div>
+    </div>
+    <br />
+    <div>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="Submit" style="font-size: 15px; padding: 15px 15px">
+        Submit vote
+      </button>
+    </div>
+  </form>
+</html>
