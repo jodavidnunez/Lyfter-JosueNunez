@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="M2_Semana3_Ejercicio_1_Forms.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <form action="confirmation.html" method="post">
+    <div class="text-above-title">
+      <h1>_</h1>
+    </div>
+    <div class="title">
+      <h1>Contact us!</h1>
+    </div>
+    <div>
+      <div class="text-below-title">
+        <p>Got something to say? Fire away!</p>
+      </div>
+      <div>
+        <div>
+          <label for="first_name"></label>
+          <input
+            type="text"
+            id="first_name"
+            name="firstName"
+            placeholder=" First name * "
+            required
+          />
+        </div>
+        <div>
+          <label for="last_name"></label>
+          <br />
+          <input
+            type="text"
+            id="last_name"
+            name="lastName"
+            placeholder=" Last name * "
+            required
+          />
+        </div>
+        <div class="input-container">
+          <label for="email"></label>
+          <br />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder=" Email address * "
+            required
+          />
+          <span class="icon"><i class="fa fa-envelope"></i></span>
+        </div>
+        <div>
+          <label for="msg_title"></label>
+          <br />
+          <select id="msg_title" name="msgTitle" required>
+            <option value="" disabled selected class="placeholder">
+              What is your message about? *
+            </option>
+            <option value="Feedback">Feedback</option>
+            <option value="Complain">Complain</option>
+            <option value="Recommendation">Recommendation</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="msg_body"></label>
+          <br />
+          <input
+            type="text"
+            id="msg_body"
+            name="msgBody"
+            placeholder=" Fire away! * "
+            required
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+    <div>
+      <button type="Submit">Send my message</button>
+    </div>
+    <div>
+      <span class="text-before"> Powered by </span>
+      <img src="bottom_right_icon2.jpg" class="bottom-right-image" />
+      <span class="text-after"> NetHunt CRM</span>
+    </div>
+  </form>
+</html>

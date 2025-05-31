@@ -1,0 +1,126 @@
+body {
+    background-color: blue;
+}
+
+.title {
+    padding-left: 1%;
+    font-size: 0.8rem;
+}
+
+.text-above-title {
+    padding-left: 1%;
+    font-size: 1rem;
+    margin-bottom: 1em;
+    color: blue
+}
+
+.text-below-title {
+    padding-left: 1%;
+    font-size: 0.8rem;
+    margin-bottom: 2em;
+}
+
+input {
+    position: relative;
+    border-radius: 0.3em;
+    width: 90%;
+    height: 2.5em;
+    margin-left: 0.4em;
+    margin-bottom: 0em;
+    border: 0;
+    padding: 0;
+    padding-left: 0.05rem;
+    background-color: whitesmoke;
+}
+
+select {
+    color: gray;
+    position: relative;
+    border-radius: 0.3em;
+    width: 90%;
+    height: 2.5em;
+    margin-left: 0.4em;
+    margin-bottom: 0em;
+    border: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+.placeholder {
+    color: gray;
+}
+
+form {
+    text-align: left;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 0 0.1em rgb(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 22%;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    position: absolute;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    margin-left: 0.5em;
+    padding: 2em 0;
+    cursor: pointer;
+    width: 14em;
+    display: left;
+}
+
+.bottom-right-image {
+    max-width: 1em;
+    max-height: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 0.3em;
+    top: 0.7em;
+    position: relative;
+}
+
+.input-container {
+    position: relative;
+    padding: 0;
+    width:100%;
+}
+
+.input-container input[type="email"] {
+    box-sizing: border-box;
+    width: 90%;
+}
+
+.input-container .icon {
+    color:gray;
+    width: 0;
+    height: 0;
+    right: 3.15rem;
+    top: 1.8rem;
+    pointer-events: none;
+    font-size: 0.6rem;
+    position: absolute;
+}
+
+.text-before {
+    color: grey;
+    margin-right: 0px;
+    font-size: 0.5rem;
+    padding-left: 63%;
+}
+
+.text-after {
+    color: black;
+    margin-left: 0px;
+    font-size: 0.5rem;
+    margin-right: 0px;
+    padding-right: 0px;
+    border-right: 0px;
+}
