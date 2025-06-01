@@ -1,6 +1,6 @@
 .container {
  display: grid;
- grid-template-columns: repeat(10, auto); /* Seven columns */
+ grid-template-columns: repeat(10, auto); /* Ten columns */
  grid-template-rows: auto auto repeat(4, auto); /* Six rows */
  background-color: dodgerblue;
  padding: 10px;
@@ -23,7 +23,7 @@ font-size: 25px;
 text-align: left;
 }
 
-.second_row .wide {
+.second_row.wide {
 grid-column: span 2; /* Span two columns */
 }
 
@@ -35,6 +35,6 @@ font-size: 20px;
 text-align: left;
 }
 
-.regular_rows .wide {
+.regular_rows.wide {
 grid-column: span 2; /* Span two columns */
 }
