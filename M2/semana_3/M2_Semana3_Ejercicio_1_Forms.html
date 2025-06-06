@@ -19,7 +19,7 @@
         <p>Got something to say? Fire away!</p>
       </div>
       <div>
-        <div>
+        <div class="input-container">
           <label for="first_name"></label>
           <input
             type="text"
@@ -29,9 +29,8 @@
             required
           />
         </div>
-        <div>
+        <div class="input-container">
           <label for="last_name"></label>
-          <br />
           <input
             type="text"
             id="last_name"
@@ -42,20 +41,17 @@
         </div>
         <div class="input-container">
           <label for="email"></label>
-          <br />
-          <input
+          <input class="input-envelope"
             type="email"
             id="email"
             name="email"
             placeholder=" Email address * "
             required
           />
-          <span class="icon"><i class="fa fa-envelope"></i></span>
         </div>
-        <div>
+        <div class="input-container">
           <label for="msg_title"></label>
-          <br />
-          <select id="msg_title" name="msgTitle" required>
+          <select id="msg_title" name="msgTitle" class="select-chevron" required>
             <option value="" disabled selected class="placeholder">
               What is your message about? *
             </option>
@@ -65,9 +61,8 @@
             <option value="Other">Other</option>
           </select>
         </div>
-        <div>
+        <div class="input-container">
           <label for="msg_body"></label>
-          <br />
           <input
             type="text"
             id="msg_body"
@@ -76,16 +71,17 @@
             required
           />
         </div>
-        <br />
       </div>
     </div>
     <div>
       <button type="Submit">Send my message</button>
     </div>
-    <div>
-      <span class="text-before"> Powered by </span>
-      <img src="bottom_right_icon2.jpg" class="bottom-right-image" />
-      <span class="text-after"> NetHunt CRM</span>
+    <div class="bottom-container">
+      <div class="sub-bottom-container">
+        <span class="text-before"> Powered by </span>
+        <img src="bottom_right_icon2.jpg" class="bottom-right-image" />
+        <span class="text-after"> NetHunt CRM</span>
+      <div class="bottom-container">
     </div>
   </form>
 </html>

@@ -1,11 +1,14 @@
 body {
     background-color: blue;
+    min-width: 100%;
 }
+
 
 .title {
     padding-left: 1%;
     font-size: 0.8rem;
 }
+
 
 .text-above-title {
     padding-left: 1%;
@@ -14,41 +17,70 @@ body {
     color: blue
 }
 
+
 .text-below-title {
     padding-left: 1%;
     font-size: 0.8rem;
     margin-bottom: 2em;
 }
 
+
 input {
     position: relative;
     border-radius: 0.3em;
     width: 90%;
     height: 2.5em;
-    margin-left: 0.4em;
-    margin-bottom: 0em;
     border: 0;
     padding: 0;
     padding-left: 0.05rem;
     background-color: whitesmoke;
 }
 
-select {
+
+.input-envelope {
+    background: url('SVGs/envelope.svg');
+    background-position: 97% center;
+    background-size: 1.5em 1.5em;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    position: relative;
+    border-radius: 0.3em;
+    width: 90%;
+    height: 2.5em;
+    border: 0;
+    padding: 0;
+    padding-left: 0.05rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.select-chevron {
+    background: url('SVGs/chevron.svg');
+    background-position: 97% center;
+    background-size: 1.5em 1.5em;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    position: relative;
     color: gray;
     position: relative;
     border-radius: 0.3em;
     width: 90%;
     height: 2.5em;
-    margin-left: 0.4em;
-    margin-bottom: 0em;
     border: 0;
-    padding: 0;
+    padding-left: 0.3em;
     background-color: whitesmoke;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
+
 
 .placeholder {
     color: gray;
 }
+
 
 form {
     text-align: left;
@@ -57,70 +89,91 @@ form {
     border-radius: 1em;
     box-shadow: 0 0 0.1em rgb(0, 0, 0, 0.1);
     display: inline-block;
-    width: 22%;
+    width: 30%;
     font-family: 'Arial', sans-serif;
     font-size: 1rem;
     position: absolute;
 }
+
 
 button {
     background-color: blue;
     color: white;
     border: 0;
     border-radius: 5px;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-bottom: 0.3em;
-    margin-left: 0.5em;
+    margin-left: 1%;
     padding: 2em 0;
     cursor: pointer;
     width: 14em;
     display: left;
 }
 
+
 .bottom-right-image {
     max-width: 1em;
     max-height: 1em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    padding-left: 0.3em;
-    top: 0.7em;
+    margin: 0.3em;
     position: relative;
+    vertical-align: middle;
+    float: right;
 }
+
 
 .input-container {
     position: relative;
     padding: 0;
-    width:100%;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1%;
+    width:97%;
+    display: flex;
+    flex-direction: row;
 }
 
-.input-container input[type="email"] {
-    box-sizing: border-box;
-    width: 90%;
+
+.bottom-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1%;
+    width:97%;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-.input-container .icon {
-    color:gray;
-    width: 0;
-    height: 0;
-    right: 3.15rem;
-    top: 1.8rem;
-    pointer-events: none;
-    font-size: 0.6rem;
-    position: absolute;
+
+.sub-bottom-container {
+    position: relative;
+    padding: 0;
+    margin-right: 10%;
+    display: flex;
 }
+
 
 .text-before {
+    margin-top: 1em;
     color: grey;
     margin-right: 0px;
     font-size: 0.5rem;
-    padding-left: 63%;
+    padding-left: 0;
+    float: right;
+    white-space: nowrap;
 }
 
+
 .text-after {
+    margin-top: 1em;
     color: black;
     margin-left: 0px;
     font-size: 0.5rem;
     margin-right: 0px;
     padding-right: 0px;
     border-right: 0px;
+    float: right;
+    white-space: nowrap;
 }
