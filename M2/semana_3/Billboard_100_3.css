@@ -1,0 +1,36 @@
+body {
+    padding-left: 15vw;
+    padding-right: 15vw;
+    background-color: #dddddd;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 70vw;
+    display: inline-table;
+}
+
+th {
+    background-color: blue;
+    border:none
+}
+
+td {
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+    padding: 8px;
+}
+
+.highlight {
+    background-color: white;
+}
+
+.column_one_style_override {
+    background-color: black;
+    color: white;
+} 
+
+.columns_two_to_five_style_override {
+    background-color: white;
+} 

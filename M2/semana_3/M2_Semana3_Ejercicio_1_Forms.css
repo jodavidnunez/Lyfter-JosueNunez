@@ -1,6 +1,46 @@
+
 body {
     background-color: blue;
     min-width: 100%;
+}
+
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0px;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 2em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+
+form {
+    text-align: left;
+    background-color: white;
+    padding-top: 0;
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+    padding-bottom: 2.5em;
+    border-radius: 1em;
+    box-shadow: 0 0 0.1em rgb(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 25vw;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    position: absolute;
 }
 
 
@@ -17,6 +57,18 @@ body {
 
 .text-below-title {
     font-size: 0.8rem;
+}
+
+
+.input-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -74,45 +126,6 @@ input {
 }
 
 
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0px;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-}
-
-
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 2em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-
-form {
-    text-align: left;
-    background-color: white;
-    padding-top: 0;
-    padding-right: 2.5em;
-    padding-left: 2.5em;
-    padding-bottom: 2.5em;
-    border-radius: 1em;
-    box-shadow: 0 0 0.1em rgb(0, 0, 0, 0.1);
-    display: inline-block;
-    width: 25%;
-    font-family: 'Arial', sans-serif;
-    font-size: 1rem;
-    position: absolute;
-}
-
-
 button {
     background-color: blue;
     color: white;
@@ -125,28 +138,6 @@ button {
     width: 40%;
     display: left;
     font-size: small;
-}
-
-
-.bottom-right-image {
-    max-width: 1em;
-    max-height: 1em;
-    margin: 0.3em;
-    position: relative;
-    vertical-align: middle;
-    float: right;
-}
-
-
-.input-container {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
 }
 
 
@@ -176,6 +167,16 @@ button {
     padding-left: 0;
     float: right;
     white-space: nowrap;
+}
+
+
+.bottom-right-image {
+    max-width: 1em;
+    max-height: 1em;
+    margin: 0.3em;
+    position: relative;
+    vertical-align: middle;
+    float: right;
 }
 
 
