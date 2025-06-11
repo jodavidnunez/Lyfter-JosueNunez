@@ -4,18 +4,38 @@ body {
     background-color: #dddddd;
     justify-content: center;
     font-family: arial, sans-serif;
-    width: 70vw;
 }
-
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 70vw;
+    table-layout: auto;
+    max-width: 0%;
     display: inline-table;
     border-spacing: 0px 0px;
 }
 
+.img_artist_1 {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    max-width: 10em;
+    max-width: 10em;
+    height: auto;
+    width: 100%;
+}
+
+.img_artist {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    max-width: 5em;
+    max-width: 5em;
+    height: auto;
+    width: 100%;
+}
 
 th {
     background-color: blue;
