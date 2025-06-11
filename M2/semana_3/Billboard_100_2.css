@@ -1,0 +1,40 @@
+.container {
+ display: grid;
+ grid-template-columns: repeat(10, auto); /* Ten columns */
+ grid-template-rows: auto auto repeat(4, auto); /* Six rows */
+ background-color: dodgerblue;
+ padding: 10px;
+ gap: 0; /* Space between grid items */
+}
+
+.top_row {
+background-color: blue;
+border: none;
+padding: 20px;
+font-size: 30px;
+text-align: center;
+}
+
+.second_row {
+background-color: white;
+border: 1px solid red;
+padding: 15px;
+font-size: 25px;
+text-align: left;
+}
+
+.second_row.wide {
+grid-column: span 2; /* Span two columns */
+}
+
+.regular_rows {
+background-color: #d0d0d0;
+border: 1px solid green;
+padding: 10px;
+font-size: 20px;
+text-align: left;
+}
+
+.regular_rows.wide {
+grid-column: span 2; /* Span two columns */
+}
