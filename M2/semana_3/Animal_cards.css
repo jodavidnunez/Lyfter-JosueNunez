@@ -1,0 +1,86 @@
+body {
+    background: #e0e0e0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+h1 {
+    display: block;
+    font-size: 1.1em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+p {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.card_container {
+    padding: 3em;
+    display: flex;
+    width: 90%;
+    height: 70%;
+    justify-content: center;
+    gap: 5em;
+}
+
+.card {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /*border-radius: 1em;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px;*/
+}
+
+.img_container_inside_card {
+   display: flex;
+   margin: 4.5%;
+   justify-content:center;
+   width: 90%;
+   height: 45%; 
+}
+
+.img_animal {
+   justify-content: center; 
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.text_container_inside_card {
+   font-size: 1em;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   margin: 4.5%;
+   margin-top: 0;
+   justify-content:center;
+   width: 90%;
+   height: 45%; 
+}
+
+.link {
+    align-self: flex-end;
+}
