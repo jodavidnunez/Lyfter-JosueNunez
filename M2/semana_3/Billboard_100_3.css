@@ -10,7 +10,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     table-layout: auto;
-    max-width: 0%;
+    /*max-width: 0%;*/
     display: inline-table;
     border-spacing: 0px 0px;
 }
@@ -128,7 +128,7 @@ td {
 }
 
 .highlight_pic {
-    width: 100%;
+    /*width: 100%;*/
     height: 100%;
     object-fit: cover;
     padding: 0%;
