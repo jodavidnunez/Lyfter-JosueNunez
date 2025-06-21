@@ -1,0 +1,193 @@
+
+body {
+    background-color: blue;
+    min-width: 100%;
+}
+
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0px;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 2em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+
+form {
+    text-align: left;
+    background-color: white;
+    padding-top: 0;
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+    padding-bottom: 2.5em;
+    border-radius: 1em;
+    box-shadow: 0 0 0.1em rgb(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 25vw;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    position: absolute;
+}
+
+
+.title {
+    font-size: 0.8rem;
+}
+
+
+.text-above-title {
+    font-size: 1rem;
+    color: blue
+}
+
+
+.text-below-title {
+    font-size: 0.8rem;
+}
+
+
+.input-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+input {
+    position: relative;
+    border-radius: 0.3em;
+    width: 100%;
+    height: 2.5em;
+    border: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+
+.input-envelope {
+    background: url('SVGs/envelope.svg');
+    background-position: calc(100% - 0.75em) center;
+    background-size: 1.5em 1.5em;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    position: relative;
+    border-radius: 0.3em;
+    width: 100%;
+    height: 2.5em;
+    border: 0;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.select-chevron {
+    background: url('SVGs/chevron.svg');
+    background-position: calc(100% - 0.75em) center;
+    background-size: 1.5em 1.5em;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
+    position: relative;
+    color: gray;
+    position: relative;
+    border-radius: 0.3em;
+    width: 100%;
+    height: 2.5em;
+    border: 0;
+    background-color: whitesmoke;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.placeholder {
+    color: gray;
+}
+
+
+button {
+    background-color: blue;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    padding: .75em;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    cursor: pointer;
+    width: 40%;
+    display: left;
+    font-size: small;
+}
+
+
+.bottom-container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+.sub-bottom-container {
+    position: relative;
+    padding: 0;
+    display: flex;
+    vertical-align: bottom;
+}
+
+
+.text-before {
+    margin-top: 1em;
+    color: grey;
+    margin-right: 0px;
+    font-size: 0.5rem;
+    padding-left: 0;
+    float: right;
+    white-space: nowrap;
+}
+
+
+.bottom-right-image {
+    max-width: 1em;
+    max-height: 1em;
+    margin: 0.3em;
+    position: relative;
+    vertical-align: middle;
+    float: right;
+}
+
+
+.text-after {
+    margin-top: 1em;
+    color: black;
+    margin-left: 0px;
+    font-size: 0.5rem;
+    margin-right: 0px;
+    padding-right: 0px;
+    border-right: 0px;
+    float: right;
+    white-space: nowrap;
+}
