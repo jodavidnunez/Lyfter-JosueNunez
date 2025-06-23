@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/main.css" />
+    <title>Your Page Title</title>
   </head>
-  <header>
-    <nav class="navbar">
-      <div class="nav-main">
-        <div>
-          <button class="nav-brand">
-            <img src="imgs/logo.svg" alt="logo" class="brand-image" />
-          </button>
-        </div>
-        <button class="nav-button">Home</button>
-        <button class="nav-button-2">Fruits</button>
-        <button class="nav-button-2">Vegetables</button>
-        <button class="nav-button-2">Contact</button>
-      </div>
-      <form action="/search" method="GET"><input class="my-search-bar" type="text" name="query" placeholder="Search..." required>
-    </nav>
-  </header>
   <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-main">
+          <div>
+            <button class="nav-brand">
+              <img src="imgs/logo.svg" alt="logo" class="brand-image" />
+            </button>
+          </div>
+          <button class="nav-button">Home</button>
+          <button class="nav-button-2">Fruits</button>
+          <button class="nav-button-2">Vegetables</button>
+          <button class="nav-button-2">Contact</button>
+        </div>
+        <form action="/search" method="GET">
+          <input
+            class="my-search-bar"
+            type="text"
+            name="query"
+            placeholder="Search..."
+            required
+          />
+        </form>
+      </nav>
+    </header>
     <section>
       <div class="poster content">
         <div class="poster-content">
@@ -75,7 +86,9 @@
             <img src="imgs/mangos.jpg" alt="mangos" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Mangos</span></div>
+            <div class="main-row">
+              <span class="info-name">Mangos</span>
+            </div>
             <span>Local</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$2</span>
@@ -88,7 +101,9 @@
             <img src="imgs/cherries.jpg" alt="cherries" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Cherries</span></div>
+            <div class="main-row">
+              <span class="info-name">Cherries</span>
+            </div>
             <span>Imported</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$2</span>
@@ -101,7 +116,9 @@
             <img src="imgs/lemons.jpg" alt="lemons" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Lemons</span></div>
+            <div class="main-row">
+              <span class="info-name">Lemons</span>
+            </div>
             <span>Local</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$4</span>
@@ -125,7 +142,9 @@
             />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Cucumbers</span></div>
+            <div class="main-row">
+              <span class="info-name">Cucumbers</span>
+            </div>
             <span>Local</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$1</span>
@@ -138,7 +157,9 @@
             <img src="imgs/tomatoes.jpg" alt="tomatoes" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Tomatoes</span></div>
+            <div class="main-row">
+              <span class="info-name">Tomatoes</span>
+            </div>
             <span>Local</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$2</span>
@@ -151,7 +172,9 @@
             <img src="imgs/eggplant.jpg" alt="eggplant" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Eggplant</span></div>
+            <div class="main-row">
+              <span class="info-name">Eggplant</span>
+            </div>
             <span>Imported</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$4</span>
@@ -164,7 +187,9 @@
             <img src="imgs/lettuce.jpg" alt="lettuce" class="product-image" />
           </div>
           <div class="product-info">
-            <div class="main-row"><span class="info-name">Lettuce</span></div>
+            <div class="main-row">
+              <span class="info-name">Lettuce</span>
+            </div>
             <span>Local</span>
             <div class="catalog-button-and-price">
               <span class="catalog-price">$2.5</span>
@@ -183,8 +208,16 @@
               Get updates on sales specials and more
             </p>
           </div>
-          <form action="/search" method="GET"><input class="my-search-bar" type="text" name="query" placeholder="Enter your email" required>
-          <button class="footer-shop-button">Send</button>
+          <form action="/search" method="GET">
+            <input
+              class="my-search-bar"
+              type="text"
+              name="query"
+              placeholder="Enter your email"
+              required
+            />
+            <button class="footer-shop-button">Send</button>
+          </form>
         </div>
       </div>
     </section>
@@ -194,6 +227,5 @@
         tasty as they look beautiful
       </p>
     </div>
-    <section></section>
   </body>
 </html>
