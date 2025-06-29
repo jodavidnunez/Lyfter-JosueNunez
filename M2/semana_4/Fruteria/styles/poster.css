@@ -1,0 +1,82 @@
+/*poster.css*/
+.poster{
+    border-radius: 0.3em;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(255, 207, 214);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 10%;
+    margin-right: 10%;
+    .poster-image{
+        height: 20em;
+        margin: 0 2em;
+    }
+    .poster-content{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;       
+        p {
+            margin: 0;
+        }
+        .sup-text{
+            /*text-transform: uppercase;*/
+            font-weight: bold;
+            font-size: 2em;
+        }
+        .main-text{
+            /*text-transform: uppercase;*/
+            font-weight: normal;
+            font-size: 1em;
+        }
+        .poster-button-and-price{
+            display: flex;
+            flex-direction: column;
+        }
+        .poster-shop-button{
+            background-color: rgb(255, 0, 115);
+            position: relative;
+            color: white;
+            width: 7em;
+            height: 2.5em;
+            font-size: 1em;
+            margin-top: 0.5em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .poster-shop-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            pointer-events: none;
+            transition: background 0.3s ease;
+        }
+        .poster-shop-button:hover{
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .poster-shop-button:hover::before{
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .poster-shop-button:active{
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transform: translateY(1px);
+        }
+        .poster-price {
+            margin-top: 1em;
+            font-size: 2em;
+            font-weight: bold;
+            color: rgb(255, 0, 115);
+        }
+    }
+}
