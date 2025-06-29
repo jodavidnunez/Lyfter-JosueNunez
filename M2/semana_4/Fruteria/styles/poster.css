@@ -4,13 +4,13 @@
     display: flex;
     justify-content: space-evenly;
     background-color: rgb(255, 207, 214);
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2em;
+    margin-bottom: 2em;
     margin-left: 10%;
     margin-right: 10%;
     .poster-image{
-        height: 20rem;
-        margin: 0 2rem;
+        height: 20em;
+        margin: 0 2em;
     }
     .poster-content{
         width: 50%;
@@ -23,12 +23,12 @@
         .sup-text{
             /*text-transform: uppercase;*/
             font-weight: bold;
-            font-size: 2rem;
+            font-size: 2em;
         }
         .main-text{
             /*text-transform: uppercase;*/
             font-weight: normal;
-            font-size: 1rem;
+            font-size: 1em;
         }
         .poster-button-and-price{
             display: flex;
@@ -38,10 +38,10 @@
             background-color: rgb(255, 0, 115);
             position: relative;
             color: white;
-            width: 7rem;
-            height: 2.5rem;
-            font-size: 1rem;
-            margin-top: 0.5rem;
+            width: 7em;
+            height: 2.5em;
+            font-size: 1em;
+            margin-top: 0.5em;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -73,8 +73,8 @@
             transform: translateY(1px);
         }
         .poster-price {
-            margin-top: 1rem;
-            font-size: 2rem;
+            margin-top: 1em;
+            font-size: 2em;
             font-weight: bold;
             color: rgb(255, 0, 115);
         }

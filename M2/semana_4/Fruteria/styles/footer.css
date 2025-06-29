@@ -9,16 +9,15 @@
     margin-left: 10%;
     margin-right: 10%;
     align-items: center;
+    .footer-items-spacing{
+        margin: 0.75rem !important;
+    }
     .footer-content{
-        margin-top: 4rem;
-        margin-bottom: 4rem;
+        padding: 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /*text-align: center;*/      
-        p {
-            margin: 0;
-        }
+        align-items: center;
         .footer-sup-text{
             /*text-transform: uppercase;*/
             font-weight: bold;
@@ -39,7 +38,7 @@
             background-color: rgb(255, 0, 115);
             position: relative;
             color: white;
-            width: 4rem;
+            width: 6rem;
             height: 2rem;
             font-size: 1rem;
             border: none;
@@ -78,6 +77,13 @@
             font-weight: bold;
             color: rgb(255, 0, 115);
         }
+    }
+    .footer-search-bar {
+        outline: none;
+        border-color: lightgray;
+        border-style: solid;
+        height: 2em;
+        text-align: center;
     }
 }
 

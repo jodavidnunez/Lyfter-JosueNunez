@@ -1,8 +1,9 @@
 /*header.css*/
 .navbar{
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-right: 0.8rem !important;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-right: 10% !important;
+    padding-left: 2.5% !important;
     background-color: rgb(241, 241, 241);
     display: flex;
     justify-content: space-between;
@@ -31,7 +32,7 @@
         border-bottom: 2px solid #222222;
     }
     .nav-brand{
-        margin-right: 2rem;
+        margin-right: 2em;
         font-family: cursive;
         font-weight: bold;
         color: orangered;
@@ -41,7 +42,7 @@
         cursor: pointer;
     }
     .brand-image{
-        width: 4rem;
+        width: 4em;
     }
     .icon-button{
         border: 1px solid rgba(0,0,0,0);
@@ -53,12 +54,20 @@
         border: 1px solid #222222;
     }
     .nav-icon{
-        width: 2rem;
-        height: 2rem;
-    }    
-}
-    .my-search-bar {
+        width: 2em;
+        height: 2em;
+    }
+    .header-search-bar {
         outline: none;
         border-color: lightgray;
         border-style: solid;
     }
+}
+
+
+
+
+
+
+
+    
