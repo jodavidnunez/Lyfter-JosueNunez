@@ -1,0 +1,73 @@
+/*header.css*/
+.navbar{
+    margin-left: 0%;
+    margin-right: 0%;
+    padding-right: 10% !important;
+    padding-left: 2.5% !important;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav-main{
+        display: flex;
+        align-items:center;
+    }
+    .nav-button{
+        /*text-transform: uppercase;*/
+        border: none;
+        background: none;
+        color: black;
+        cursor: pointer;
+    }
+    
+    .nav-button-2{
+        /*text-transform: uppercase;*/
+        border: none;
+        background: none;
+        color: gray;
+        cursor: pointer;
+    }
+    
+    .nav-button:hover, .nav-button:active, .nav-button:focus{
+        border-bottom: 2px solid #222222;
+    }
+    .nav-brand{
+        margin-right: 2em;
+        font-family: cursive;
+        font-weight: bold;
+        color: orangered;
+        width: min-content;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+    .brand-image{
+        width: 4em;
+    }
+    .icon-button{
+        border: 1px solid rgba(0,0,0,0);
+        background: none;
+        cursor: pointer;
+
+    }
+    .icon-button:hover{
+        border: 1px solid #222222;
+    }
+    .nav-icon{
+        width: 2em;
+        height: 2em;
+    }
+    .header-search-bar {
+        outline: none;
+        border-color: lightgray;
+        border-style: solid;
+    }
+}
+
+
+
+
+
+
+
+    
