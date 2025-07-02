@@ -9,7 +9,7 @@ myArray.forEach((i) => {
 
 /* 2.a. Solucion con 'for' */
 const inputArray1 = [1, 2, 3, 4];
-let outputArray = [];
+const outputArray = [];
 const inputArraySize = inputArray1.length;
 for (let index=0; index < inputArraySize; index++) {
     tmp_num = inputArray1[index];
@@ -34,17 +34,20 @@ console.log(farenheitTemps);
 
 
 /* 4. Toma un string y conviertelo en una lista de palabras, separandolas por espacios en blanco. No puedes usar la función split. */
+/* Replacing regular 'for' by 'for of' */
 const inputString = "This is a string!";
-let outputList = []
+const outputList = [];
 let word = "";
-const limit = inputString.length;
-for (let index=0; index <= limit; index++) {
-    const char = inputString[index]    
-    if (char === " " || char === inputString[limit]) {
+for (const char of inputString) {
+    if (char === " ") {
         outputList.push(word);
         word = "";
     } else {
         word += char;
+        if (char === inputString[inputString.length - 1]) {
+            outputList.push(word);
+            break;
+        }
     }
 }
 console.log(outputList)
@@ -63,16 +66,16 @@ const student = {
 	]
 }
 
-let result = {};
+const result = {};
 for (const primaryKey in student) {
     if (primaryKey === "name") {
-        result.name = student[primaryKey]
+        result.name = student[primaryKey];
     } else {
-        allScoresList = [];
-        scoresAndSubjectNamesObj = {};
+        const allScoresList = [];
+        const scoresAndSubjectNamesObj = {};
         student[primaryKey].forEach((subject) => {
-            currentSubjectName = "";
-            currentGrade = 0;
+            let currentSubjectName;
+            let currentGrade;
             for (secondaryKey in subject) {
                 if (secondaryKey === "name") {
                     currentSubjectName = subject[secondaryKey]
@@ -80,23 +83,21 @@ for (const primaryKey in student) {
                     currentGrade = subject[secondaryKey];
                     allScoresList.push(currentGrade);
                     scoresAndSubjectNamesObj[currentSubjectName] = currentGrade;   
-                    currentSubjectName = "";
-                    currentGrade = 0;
                 }
             }
         })
-        sortedScoresList = allScoresList.sort((a, b) => a - b);
+        const sortedScoresList = allScoresList.sort((a, b) => a - b);
         const scoresSum = sortedScoresList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        sortedScoresListSize = sortedScoresList.length;
+        const sortedScoresListSize = sortedScoresList.length;
         const gradeAvg = scoresSum/sortedScoresListSize;
-        let lowestGrade = "";
-        let highestGrade = "";
+        let lowestGrade;
+        let highestGrade;
         //console.log(scoresAndSubjectNamesObj);
         for (subjectName in scoresAndSubjectNamesObj) {
+            //console.log(subjectName, scoresAndSubjectNamesObj[subjectName], sortedScoresList[0], sortedScoresList[sortedScoresListSize]);
             if (scoresAndSubjectNamesObj[subjectName] === sortedScoresList[0]) {
                 lowestGrade = subjectName;
-            }
-            if (scoresAndSubjectNamesObj.subjectName === sortedScoresList[sortedScoresListSize]) {
+            } else if (scoresAndSubjectNamesObj[subjectName] === sortedScoresList[sortedScoresListSize - 1]) {
                 highestGrade = subjectName;
             }
         }
