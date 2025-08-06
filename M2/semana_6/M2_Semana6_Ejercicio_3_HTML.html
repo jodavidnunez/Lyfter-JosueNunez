@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="M2_Semana6_Ejercicio_3_JS.js"></script>
+    <link rel="stylesheet" href="M2_Semana6_Ejercicio_3_CSS.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <form action="confirmation.html" method="post">
+      <div class="text-above-title">
+        <h1>_</h1>
+      </div>
+      <div class="title">
+        <h1>Log In form</h1>
+      </div>
+      <div>
+        <div>
+          <div class="input-container row-direction">
+            <label for="first_name">
+              <input
+                type="text"
+                id="first_name"
+                name="firstName"
+                placeholder=" First name * "
+                required
+              />
+            </label>
+          </div>
+          <div class="input-container">
+            <label for="last_name">
+              <input
+                type="text"
+                id="last_name"
+                name="lastName"
+                placeholder=" Last name * "
+                required
+              />
+            </label>
+          </div>
+          <div class="input-container row-direction">
+            <label for="email">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder=" Email address * "
+                required
+              />
+            </label>
+          </div>
+          <div class="input-container row-direction">
+            <label for="password">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder=" Password * "
+                required
+              />
+            </label>
+          </div>
+          <div class="input-container column-direction">
+            <div class="text-below-title">
+              <p>Are you an employee?</p>
+            </div>
+            <div>
+              <label class="radio">
+                <input
+                  type="radio"
+                  id="employee_yes"
+                  name="isEmployee"
+                  class="radio-input"
+                  value="yes"
+                />
+                <span class="radio-radio"></span>
+                Yes
+              </label>
+              <label class="radio">
+                <input
+                  type="radio"
+                  id="employee_no"
+                  name="isEmployee"
+                  class="radio-input"
+                  value="no"
+                  checked
+                />
+                <span class="radio-radio"></span>
+                No
+              </label>
+            </div>
+          </div>
+          <div
+            class="input-container row-direction"
+            id="job_position_container"
+            style="display: none"
+          >
+            <label for="job_position">
+              <input
+                type="text"
+                id="job_position"
+                name="jobPosition"
+                placeholder=" Job position * "
+                required
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit">Log in</button>
+      </div>
+    </form>
+  </body>
+</html>

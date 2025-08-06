@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="M2_Semana6_Ejercicio_1_CSS.css" />
+    <title>Button to modify a disorganized list</title>
+  </head>
+  <body>
+    <section>
+      <div class="button-and-list-container">
+        <div class="button-container">
+          <button class="fancy-button button-add" id="add">ADD</button>
+          <button class="fancy-button button-clear" id="clear">CLEAR</button>
+        </div>
+        <div class="list-container">
+          <ul>
+            <li id="list">An item</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+<script>
+  const add_button = document.getElementById("add");
+  const addItem = () => {
+    const item = document.createElement("li");
+    item.innerHTML = "Another item";
+    const list = document.getElementById("list");
+    list.appendChild(item);
+  };
+  add_button.addEventListener("click", addItem);
+  const clear_button = document.getElementById("clear");
+  const clearItems = () => {
+    const ul = document.getElementById("list");
+    ul.replaceChildren();
+  };
+  clear_button.addEventListener("click", clearItems);
+</script>
