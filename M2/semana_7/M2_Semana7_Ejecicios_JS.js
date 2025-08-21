@@ -65,6 +65,8 @@ const checkNumberUnnamedExpVar = function (num, evenUnnamedExp, oddUnnamedExp) {
 checkNumberUnnamedExpVar(4, evenCallbackUnnamedExpVar, oddCallbackUnnamedExpVar); // Even case
 checkNumberUnnamedExpVar(5, evenCallbackUnnamedExpVar, oddCallbackUnnamedExpVar); // Odd case
 
+
+
 /*2. Cree dos archivos de texto con el siguiente contenido.    
     Lea ambos archivos y compare cuales palabras se repiten en ambos. Muestre el mensaje escondido al final del programa.*/
 
@@ -73,7 +75,7 @@ const readline = require('readline');
 const fs = require('fs');
 
 // Function to read a file line by line
-function readFileLineByLine(filePath, callback) {
+const readFileCallback = function readFileLineByLine(filePath, callback) {
     const lines = [];
     const fileStream = fs.createReadStream(filePath);
     const rl = readline.createInterface({
@@ -84,16 +86,17 @@ function readFileLineByLine(filePath, callback) {
         lines.push(line.trim());
     });
     rl.on('close', () => {
-        callback(lines);
+        // return(lines, []); //No callback approach
+        callback(lines, null); //Callback approach
     });
     rl.on('error', (err) => {
-        callback([], err);
+        // return([], err); //No callback approach
+        callback(null, lines); //Callback approach
     });
-    return lines;
 }
 
 // Function to find duplicate lines between two arrays
-function findDuplicateLines(lines1, lines2) {
+const duplicatesCallback = function findDuplicateLines(lines1, lines2) {
     const duplicates = [];
     const set1 = new Set(lines1);
     const set2 = new Set(lines2);
@@ -105,12 +108,42 @@ function findDuplicateLines(lines1, lines2) {
     return duplicates;   
 }
 
-// File paths
+/*
+// First wrong approach
+function get_secret_message(file1, file2, readFileCallback, duplicatesCallback) {
+    const [lines1, err1] = readFileCallback(file1);
+    if (err1 != "") {
+        // report error on file 1
+    } else {
+        const [lines2, err2] = readFileCallback(file2);
+        if (err2 != "") {
+            // report error on file 2
+        } else {
+            // compare lines
+            const secret_message = duplicatesCallback(lines1, lines2)
+            return secret_message
+        }
+    }
+}
+
 const filePath1 = "File_1.txt";
 const filePath2 = "File_2.txt";
+const secret_message = get_secret_message(filePath1, filePath2, readFileCallback, duplicatesCallback);
+*/
 
-readFileLineByLine(filePath1, function(result, error) {
-    lines1 = result;
-    err1 = error;
-    processIfReady();
+const filePath1 = "File_1.txt";
+const filePath2 = "File_2.txt";
+readFileCallback(filePath1, function(lines1, err1) {
+    if (err1) { 
+        return console.error("Error en archivo 1:", err1);
+    } else {
+        readFileCallback(filePath2, function(lines2, err2){
+            if (err2) {
+                return console.error("Error en archivo 2:", err2);
+            } else {
+                const secret_message = duplicatesCallback(lines1, lines2);
+                console.log(secret_message);
+            }
+        });
+    };
 });
