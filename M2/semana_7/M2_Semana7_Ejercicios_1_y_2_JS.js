@@ -75,7 +75,7 @@ const readline = require('readline');
 const fs = require('fs');
 
 // Function to read a file line by line
-const readFileCallback = function readFileLineByLine(filePath, callback) {
+const readFileCallbackStream = function readFileLineByLine(filePath, callback) {
     const lines = [];
     const fileStream = fs.createReadStream(filePath);
     const rl = readline.createInterface({
@@ -92,6 +92,17 @@ const readFileCallback = function readFileLineByLine(filePath, callback) {
     rl.on('error', (err) => {
         // return([], err); //No callback approach
         callback(null, lines); //Callback approach
+    });
+}
+
+const readFileCallback = function readFileLineByLine(filePath, callback) {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            callback(null, err);
+        } else {
+            const lines = data.split('\n').map(line => line.trim());
+            callback(lines, null);
+        }
     });
 }
 
