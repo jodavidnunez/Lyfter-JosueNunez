@@ -1,7 +1,7 @@
 async function getUser(userId, badUserId = "") {
     console.log("-I-: Sending request...");
     try {
-        const response = await fetch(`https://reqres.in/api/users/${userId}${badUserId}`);
+        const response = await fetch(`https://reqres.in/api/users/${userId}${badUserId}`, {headers:{"x-api-key":"reqres-free-v1"}});
         const user = await response.json();
         if (!response.ok) {
             throw new Error(`User '${userId}${badUserId}' is not found.`);

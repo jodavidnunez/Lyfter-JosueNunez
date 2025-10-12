@@ -14,6 +14,18 @@
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
     
 }
+
+.my-button:disabled {
+    background-color: #ccc;
+    cursor:not-allowed;
+    transform: none;
+}
+
+.my-button:disabled:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: none;
+}
+
 .my-button::before {
     content: '';
     position: absolute;

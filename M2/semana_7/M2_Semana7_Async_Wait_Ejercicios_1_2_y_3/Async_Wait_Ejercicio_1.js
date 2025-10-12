@@ -1,7 +1,7 @@
 async function getUserData(userId) {
     console.log("-I-: Sending request...");
     try {
-        const response = await fetch(`https://reqres.in/api/users/${userId}`);
+        const response = await fetch(`https://reqres.in/api/users/${userId}`, {headers:{"x-api-key":"reqres-free-v1"}});
         const user = await response.json();
         return user.data; 
     } catch (error) {

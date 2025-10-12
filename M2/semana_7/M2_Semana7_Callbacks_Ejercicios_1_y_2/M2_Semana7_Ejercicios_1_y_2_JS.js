@@ -73,6 +73,7 @@ checkNumberUnnamedExpVar(5, evenCallbackUnnamedExpVar, oddCallbackUnnamedExpVar)
 // Import modules
 const readline = require('readline');
 const fs = require('fs');
+const { resolve } = require('path');
 
 // Function to read a file line by line
 const readFileCallbackStream = function readFileLineByLine(filePath, callback) {
@@ -106,6 +107,19 @@ const readFileCallback = function readFileLineByLine(filePath, callback) {
     });
 }
 
+const readFilePromise = function(filePath) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filePath, 'utf8', (err,data) => {
+            if (err) {
+                reject(err);
+            } else {
+                const lines = data.split('\n').map(line => line.trim());
+                resolve(lines);
+            }
+        });
+    });
+}
+
 // Function to find duplicate lines between two arrays
 const duplicatesCallback = function findDuplicateLines(lines1, lines2) {
     const duplicates = [];
@@ -119,31 +133,14 @@ const duplicatesCallback = function findDuplicateLines(lines1, lines2) {
     return duplicates;   
 }
 
-/*
-// First wrong approach
-function get_secret_message(file1, file2, readFileCallback, duplicatesCallback) {
-    const [lines1, err1] = readFileCallback(file1);
-    if (err1 != "") {
-        // report error on file 1
-    } else {
-        const [lines2, err2] = readFileCallback(file2);
-        if (err2 != "") {
-            // report error on file 2
-        } else {
-            // compare lines
-            const secret_message = duplicatesCallback(lines1, lines2)
-            return secret_message
-        }
-    }
-}
 
+///////////////////////////////////////
+// Main code different implementations 
+//////////////////////////////////////
 const filePath1 = "File_1.txt";
 const filePath2 = "File_2.txt";
-const secret_message = get_secret_message(filePath1, filePath2, readFileCallback, duplicatesCallback);
-*/
 
-const filePath1 = "File_1.txt";
-const filePath2 = "File_2.txt";
+// 1. First implementation using regular callbacks
 readFileCallback(filePath1, function(lines1, err1) {
     if (err1) { 
         return console.error("Error en archivo 1:", err1);
@@ -158,3 +155,59 @@ readFileCallback(filePath1, function(lines1, err1) {
         });
     };
 });
+
+// 2. Second implementation using basic direct translation to promises
+readFilePromise(filePath1)
+    .then(lines1 => {
+        return readFilePromise(filePath2)
+            .then(lines2 => {
+                const secret_message=duplicatesCallback(lines1, lines2)
+                console.log(secret_message)
+            })
+    })
+    .catch(err => {
+        console.error("Error:", err)
+    })
+
+// 3. Third implementation, improving promise chaining
+let file1lines;
+readFilePromise(filePath1)
+    .then(lines1 => {
+        file1lines = lines1
+        return readFilePromise(filePath2)
+    })
+    .then(lines2 => {
+        const secret_message = duplicatesCallback(file1lines, lines2)
+        console.log(secret_message)
+    })
+    .catch(err =>{
+        console.error("Error:", err)
+    })
+
+// 4. Fourth implementation, using Promise.all() for parallel operation
+Promise.all([
+    readFilePromise(filePath1),
+    readFilePromise(filePath2)
+])
+.then(results => {
+    const lines1 = results[0]
+    const lines2 = results[1]
+    const secret_message = duplicatesCallback(lines1, lines2)
+    console.log(secret_message)
+})
+.catch(err => {
+    console.error("Error:", err)
+})
+
+// 5. Fifth implementation, using Promise.all() plus array deconstruction
+Promise.all([
+    readFilePromise(filePath1),
+    readFilePromise(filePath2)
+])
+.then(([lines1, lines2]) => {
+    const secret_message = duplicatesCallback(lines1, lines2)
+    console.log(secret_message)
+})
+.catch(err => {
+    console.error("Error:", err)
+})
