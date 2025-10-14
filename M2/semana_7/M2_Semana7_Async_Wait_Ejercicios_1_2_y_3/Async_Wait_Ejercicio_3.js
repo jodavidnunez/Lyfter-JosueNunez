@@ -8,14 +8,14 @@ async function getUser(userId) {
                 case 404:
                     errorMessage = `User with ID ${userId} not found`
                     break
-                case 404:
-                    errorMessage = `User with ID ${userId} not found`
+                case 400:
+                    errorMessage = `Invalid user ID ${userId}`
                     break
-                case 404:
-                    errorMessage = `User with ID ${userId} not found`
+                case 500:
+                    errorMessage = `Server error`
                     break
                 default:
-                    errorMessage = `HTTP failed with status: ${userResult.status}`
+                    errorMessage = `HTTP failed with status: ${response.status}`
             }
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
