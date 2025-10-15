@@ -211,3 +211,18 @@ Promise.all([
 .catch(err => {
     console.error("Error:", err)
 })
+
+// 6. Final implementation, using Async/await plus promises
+async function findSecretMessage() {
+    try {
+        const [lines1, lines2] = await Promise.all([
+            readFilePromise(filePath1),
+            readFilePromise(filePath2)
+        ])
+        const result = duplicatesCallback(lines1, lines2)
+        console.log(result)
+    } catch (error) {
+        console.error(error)
+    }
+}
+findSecretMessage();
