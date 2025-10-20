@@ -1,0 +1,128 @@
+.my-button{
+    background-color: darkgrey;
+    position: relative;
+    color: white;
+    width: 7em;
+    height: 2.5em;
+    font-size: 1em;
+    margin-top: 0.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    
+}
+
+.my-button:disabled {
+    background-color: #ccc;
+    cursor:not-allowed;
+    transform: none;
+}
+
+.my-button:disabled:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: none;
+}
+
+.my-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+.my-button:hover{
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+.my-button:hover::before{
+    background: rgba(255, 255, 255, 0.4);
+}
+.my-button:active{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+.input-container {
+    border-radius: 0.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-items: left;
+    outline: none;
+    border-color: lightgray;
+    border-style: none;
+    text-align: left;
+    padding: 1em;
+}
+
+.input-container input {
+    border-radius: 0.3em;
+    border: 1px solid lightgray;
+    padding: 0.5em;
+    margin: 0.2em 0;
+    font-size: 1em;
+    width: 25%;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 1.2em;
+    height: 1.2em;
+    border: 2px solid lightgray;
+    border-radius: 0.3em;
+    background: white;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Optional: style when checked */
+input[type="checkbox"]:checked {
+    background: darkgray;
+}
+
+.custom-checkbox {
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid lightgray;
+    border-radius: 0.3em;
+    background: white;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + .custom-checkbox::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: gray;
+    font-size: 1em;
+}
+
+#conditional-input {
+    display: none;
+    margin-top: 1em;
+}
+
+#toggle-checkbox:checked ~ #conditional-input {
+    display: block;
+}
+
+.checkbox-label {
+    margin-left: 0.5em;
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+}

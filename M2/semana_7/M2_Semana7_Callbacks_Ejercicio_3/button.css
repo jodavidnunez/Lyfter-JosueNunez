@@ -1,0 +1,67 @@
+.my-button{
+    background-color:black;
+    position: relative;
+    color: white;
+    width: 7em;
+    height: 2.5em;
+    font-size: 1em;
+    margin-top: 0.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    
+}
+.my-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+.my-button:hover{
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+.my-button:hover::before{
+    background: rgba(255, 255, 255, 0.4);
+}
+.my-button:active{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+.general-text-container-settings {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em;
+    font-weight: bold;
+}
+.white {
+    background-color: black;
+    color: white;
+}
+.red {
+    background-color: red;
+}
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color: yellow;
+}
+.cyan {
+    background-color: cyan;
+}
+.pink {
+    background-color: pink;
+}
