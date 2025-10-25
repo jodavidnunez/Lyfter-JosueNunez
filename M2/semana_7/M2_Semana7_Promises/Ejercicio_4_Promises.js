@@ -32,15 +32,25 @@ user2
     })
     .finally(() => {
         console.log("INFO: Exercise #1 - Promise completed.\n\n");
-    
+
         // Ejercicio #2: Forzar el error y reportarlo adecuadamente
         const userId3 = 23;
-        const user3= fetch(`https://reqres.in/api/users/${userId3}`, {headers:{"x-api-key":"reqres-free-v1"}});
+        const user3 = fetch(`https://reqres.in/api/users/${userId3}`, { headers: { "x-api-key": "reqres-free-v1" } });
         user3
             .then(response => {
                 if (!response.ok) {
+                    throw response;
+                }
+                return response.json();
+            })
+            .then(response_data => {
+                console.log(response_data);
+            })
+            .catch(error => {
+                if (error && typeof error.status === 'number') {
+                    const status = error.status;
                     let errorMessage;
-                    switch (response.status) {
+                    switch (status) {
                         case 404:
                             errorMessage = `User with ID ${userId3} not found`;
                             break;
@@ -51,19 +61,14 @@ user2
                             errorMessage = `Server error`;
                             break;
                         default:
-                            errorMessage = `HTTP failed with status: ${response.status}`;
+                            errorMessage = `HTTP failed with status: ${status}`;
                     }
-                    throw new Error(errorMessage);
+                    console.log(`ERROR: ${errorMessage} (status ${status})`);
+                } else {
+                    console.log(`ERROR: ${error && error.message ? error.message : String(error)}`);
                 }
-                return response.json();
-            })
-            .then(response_data => {
-                console.log(response_data);
-            })
-            .catch(error => {
-                console.log(`ERROR: ${error.message}`);
             })
             .finally(() => {
                 console.log("INFO: Exercise #2 - Promise completed.");
             });
-        });
+    });

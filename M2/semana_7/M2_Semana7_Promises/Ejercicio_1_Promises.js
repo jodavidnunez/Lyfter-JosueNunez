@@ -7,27 +7,33 @@ async function getPokemon(pokemonId) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`);
         if (!response.ok) {
+            throw response;
+        }
+        const pokemon = await response.json();
+        return pokemon;
+    } catch (error) {
+        if (error && typeof error.status === 'number') {
+            const status = error.status;
             let errorMessage;
-            switch (response.status) {
+            switch (status) {
                 case 404:
                     errorMessage = `Pokemon with ID ${pokemonId} not found`;
                     break;
                 case 400:
-                    errorMessage = `Invalid Pokemon ID ${pokemonId}`
-                    break
+                    errorMessage = `Invalid Pokemon ID ${pokemonId}`;
+                    break;
                 case 500:
-                    errorMessage = `Server error`
-                    break
+                    errorMessage = `Server error`;
+                    break;
                 default:
-                    errorMessage = `HTTP failed with status: ${response.status}`;
+                    errorMessage = `HTTP failed with status: ${status}`;
             }
-            throw new Error(errorMessage);
+            const errToThrow = new Error(errorMessage);
+            errToThrow.status = status;
+            throw errToThrow;
         }
-        const pokemon = await response.json();
-        return pokemon; 
-    } catch (error) {
-        console.log(`-E-: ${error}`);
-        return { error: error.message };
+        if (error instanceof Error) throw error;
+        throw new Error(String(error));
     }
 }
 
@@ -45,5 +51,10 @@ Promise.all([
 })
 
 .catch(err => {
-    console.error("Error:", err)
+    // centralized catch: show message and status if available
+    if (err && typeof err.status === 'number') {
+        console.error(`Error: ${err.message} (status ${err.status})`);
+    } else {
+        console.error("Error:", err?.message ?? String(err));
+    }
 })
